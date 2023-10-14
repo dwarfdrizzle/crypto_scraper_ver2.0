@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}
+Cryptick | Ahead of The Curve
+{% endblock %}
+
+{% block content %}
+<canvas id="btcChart" width="400" height="200"></canvas>
+
+<!-- You can place a smooth-scroll anchor here if needed -->
+<h2>Anaylysis</h2>
+<div class="analytics">
+    <p><strong>Highest-Lowest Difference:</strong> <span id="priceDifference">...</span></p>
+    <p><strong>Average Price:</strong> <span id="avgPrice">...</span></p>
+    <p><strong>Standard Deviation:</strong> <span id="stdDev">...</span></p>
+</div>
+<a id="dataAnchor"></a> <!-- Anchor for raw data scroll-->
+<h1>Data</h1>
+<div>
+    <table class="recent-data-box">
+        <thead>
+            <tr>
+                <th>Crypto</th>
+                <th>Exchange</th>
+                <th>Price</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be populated here via JS -->
+        </tbody>
+    </table>   
+</div>
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

@@ -1,0 +1,44 @@
+crypto_scraper
+├─ .vscode
+│  └─ settings.json
+├─ app
+│  ├─ models.py
+│  ├─ routes.py
+│  ├─ templates
+│  │  ├─ base.html
+│  │  ├─ display_data.html
+│  │  └─ index.html
+│  ├─ test_app.py
+│  ├─ __init__.py
+│  └─ __pycache__
+│     ├─ models.cpython-39.pyc
+│     ├─ routes.cpython-39.pyc
+│     └─ __init__.cpython-39.pyc
+├─ app_config.py
+├─ celerybeat-schedule.bak
+├─ celerybeat-schedule.dat
+├─ celerybeat-schedule.dir
+├─ celery_config.py
+├─ celery_worker.py
+├─ db_operations.py
+├─ file structure.txt
+├─ frontend
+│  ├─ package-lock.json
+│  ├─ package.json
+│  ├─ server.js
+│  ├─ static
+│  │  ├─ css
+│  │  └─ js
+│  │     ├─ chart.min.js
+│  │     └─ main.js
+│  └─ views
+│     └─ index.html
+├─ instance
+│  └─ crypto_data.db
+├─ package-lock.json
+├─ package.json
+├─ run.py
+├─ scraper
+│  ├─ tasks.py
+│  └─ __pycache__
+│     └─ tasks.cpython-39.pyc

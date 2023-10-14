@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Default Title{% endblock %}</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-adapter-moment/1.0.1/chartjs-adapter-moment.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-brand">Cryptick.xyz</a>
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="#dataAnchor">Data</a></li>
+                <!-- Add other nav items as needed -->
+            </ul>
+        </div>
+    </nav>
+
+    <h1 class="animate__animated animate__fadeIn">Cryptick | Exchange Comparison</h1>
+    <h2>BTC Price chart</h2>
+   
+    {% block content %}
+    <!-- Default content, which will typically be replaced in templates that extend this one -->
+    {% endblock %}
+
+    <!-- Add your JS scripts at the bottom -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}
+    <!-- Place for additional scripts in extended templates -->
+    {% endblock %}
+     
+</body>
+</html>
