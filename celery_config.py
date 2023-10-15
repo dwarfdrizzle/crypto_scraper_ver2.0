@@ -1,13 +1,16 @@
 from datetime import timedelta
+import os
 
-# Using RabbitMQ as a message broker
-CELERY_BROKER_URL = 'pyamqp://guest:guest@localhost//'
-    
-# Using RPC as a result backend
-CELERY_RESULT_BACKEND = 'rpc://'
+# Using RabbitMQ as a message broker with CLOUDAMQP on Heroku and local default RabbitMQ
+CELERY_BROKER_URL = os.environ.get('CLOUDAMQP_URL', 'pyamqp://guest:guest@localhost//')
+
+# No need for RPC or backend, because fire and forget solution reduce load
+CELERY_RESULT_BACKEND = None
 
 # Importing tasks from the tasks module
 CELERY_IMPORTS = ('scraper.tasks', )
+
+BROKER_POOL_LIMIT = 1
 
 # Beats settings
 CELERYBEAT_SCHEDULE = {
