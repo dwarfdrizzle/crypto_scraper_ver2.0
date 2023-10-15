@@ -15,16 +15,13 @@ print("[DEBUG] About to create Flask app.")
 def create_app():
     app = Flask(__name__, static_folder='../frontend/static', static_url_path='/static')
     app.config.from_object('config.app_config.Config')
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///crypto_data.db')
 
     # set secret key with heroku
     app.secret_key = os.environ.get('FLASK_SECRET_KEY') or 'a_default_secret_key'
 
     db.init_app(app)
     print("[DEBUG] Initializing database with app.")
-
-    if not os.path.exists(os.path.join(BASE_DIR, 'instance', 'crypto_data.db')):
-        with app.app_context():
-            db.create_all()
 
     from .routes import main as main_blueprint
     app.register_blueprint(main_blueprint)

@@ -21,11 +21,10 @@ from app import db, create_app
 
 
 app = create_app()
-with app.app_context():
 
-    BINANCE_API_URL = "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT"
-    COINBASEPRO_API_URL = "https://api.pro.coinbase.com/products/BTC-USD/ticker"
-    POLONIEX_API_URL = "https://api.poloniex.com/markets/btc_usdt/price"
+BINANCE_API_URL = "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT"
+COINBASEPRO_API_URL = "https://api.pro.coinbase.com/products/BTC-USD/ticker"
+POLONIEX_API_URL = "https://api.poloniex.com/markets/btc_usdt/price"
 
 @celery.task
 def fetch_binance():
@@ -45,7 +44,6 @@ def fetch_binance():
         print(f"[DEBUG] About to add {'Binance'} data to the database.")
         prune_oldest_records() #Call the pruning func here
 
-        
 
 @celery.task
 def fetch_coinbase():
