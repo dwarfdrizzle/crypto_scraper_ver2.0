@@ -15,8 +15,12 @@ print("[DEBUG] About to create Flask app.")
 def create_app():
     app = Flask(__name__, static_folder='../frontend/static', static_url_path='/static')
     app.config.from_object('config.app_config.Config')
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'sqlite:///crypto_data.db')
-
+    DATABASE_URL = os.environ.get('DATABASE_URL')
+    if DATABASE_URL:
+        DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+    app.config['SQLALCHEMY_DATABASE_URI'] = DATABASE_URL or 'sqlite:///crypto_data.db'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    
     # set secret key with heroku
     app.secret_key = os.environ.get('FLASK_SECRET_KEY') or 'a_default_secret_key'
 

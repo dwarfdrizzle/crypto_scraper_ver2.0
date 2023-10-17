@@ -7,4 +7,4 @@ node_modules/
 *.log
 *.vscode/
 *.env
-*crypto_data
+instance/crypto_data.db
