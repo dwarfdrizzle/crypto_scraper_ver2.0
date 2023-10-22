@@ -4,7 +4,6 @@ from celery import Celery
 def make_celery():
     app = create_app()
     celery = Celery(app.import_name)
-    print("[DEBUG] Broker URL:", app.config['broker_url'])
     celery.config_from_object('celery_config')
 
     class ContextTask(celery.Task):
