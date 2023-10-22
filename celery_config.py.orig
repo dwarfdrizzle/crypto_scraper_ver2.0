@@ -2,18 +2,18 @@ from datetime import timedelta
 import os
 
 # Using RabbitMQ as a message broker with CLOUDAMQP on Heroku and local default RabbitMQ
-broker_url = os.environ.get('CLOUDAMQP_URL', 'pyamqp://guest:guest@localhost:5672//')
+CELERY_BROKER_URL = os.environ.get('CLOUDAMQP_URL', 'pyamqp://guest:guest@localhost:5672//')
 
 # No need for RPC or backend, because fire and forget solution reduce load
-result_backend = None
+CELERY_RESULT_BACKEND = None
 
 # Importing tasks from the tasks module
-imports = ('scraper.tasks', )
+CELERY_IMPORTS = ('scraper.tasks', )
 
-broker_pool_limit = 1
+BROKER_POOL_LIMIT = 1
 
 # Beats settings
-beat_schedule = {
+CELERYBEAT_SCHEDULE = {
     'fetch_binance-every-t-seconds': {
         'task': 'scraper.tasks.fetch_binance',
         'schedule': timedelta(seconds=1),
