@@ -2,7 +2,7 @@ from datetime import timedelta
 import os
 
 # Using RabbitMQ as a message broker with CLOUDAMQP on Heroku and local default RabbitMQ
-CELERY_BROKER_URL = os.environ.get('CLOUDAMQP_URL', 'amqps://ipmkxngc:4haXrXwqipmSQ7H0JmfQ0pUfJuk_yN7a@toad.rmq.cloudamqp.com/ipmkxngc')
+CELERY_BROKER_URL = os.environ.get('CLOUDAMQP_URL', 'pyamqp://guest:guest@localhost:5672//')
 
 # No need for RPC or backend, because fire and forget solution reduce load
 CELERY_RESULT_BACKEND = None
