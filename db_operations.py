@@ -1,17 +1,15 @@
 from app.models import BTCPrice
 from app import create_app, db
 
-#app = create_app()
-
 # Delete oldest price records action
 def prune_oldest_records():
     record_count = BTCPrice.query.count()
     print("[DEBUG] Starting the prune_oldest_records function.")
-    if record_count > 500000:
+    if record_count > 8999:   #delete x number of records 
         record_count = BTCPrice.query.count()
         print("[DEBUG] About to query for record count.")
-        # Delete a fixed number of the oldest records
-        delete_count = 20000 
+        # Delete a fixed number of the oldest records, smaller than count
+        delete_count = 1500 
             
         # Find the oldest records
         oldest_records = BTCPrice.query.order_by(BTCPrice.timestamp.asc()).limit(delete_count).all()
