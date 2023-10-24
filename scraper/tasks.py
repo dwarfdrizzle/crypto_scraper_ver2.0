@@ -32,18 +32,27 @@ def fetch_binance():
         response = requests.get(BINANCE_API_URL)
         data = response.json()
 
+        # Log the entire response data
+        print(f"Binance API Response: {data}")  # or use a logging function if you have one set up
+
+        # Attempt to access the 'price' key with error handling
+        try:
+            price_value = float(data['price'])
+        except KeyError:
+            print("Price key not found in the Binance API response!")
+            return  # Exit the function/task if 'price' key is not found
+
         price = BTCPrice(
             exchange="Binance",
             currency_pair="BTC/USDT",
-            price=float(data['price']),
+            price=price_value,
             timestamp=datetime.utcnow()
         )
 
         db.session.add(price)
         db.session.commit()
 
-        prune_oldest_records() #Call the pruning func here
-
+        prune_oldest_records()  # Call the pruning func here
 
 @celery.task
 def fetch_coinbase():
