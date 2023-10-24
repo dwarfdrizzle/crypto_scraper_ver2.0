@@ -22,7 +22,7 @@ from app import db, create_app
 
 app = create_app()
 
-BINANCE_API_URL = "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT"
+BINANCE_API_URL = "https://api.binance.com/api/v3/avgPrice?symbol=BTCUSDT" #avgPrice change for binance 
 COINBASEPRO_API_URL = "https://api.pro.coinbase.com/products/BTC-USD/ticker"
 POLONIEX_API_URL = "https://api.poloniex.com/markets/btc_usdt/price"
 
@@ -38,10 +38,10 @@ def fetch_binance():
             price=float(data['price']),
             timestamp=datetime.utcnow()
         )
-        print(f"[DEBUG] Fetched data from {'Binance'}.")
+
         db.session.add(price)
         db.session.commit()
-        print(f"[DEBUG] About to add {'Binance'} data to the database.")
+
         prune_oldest_records() #Call the pruning func here
 
 
