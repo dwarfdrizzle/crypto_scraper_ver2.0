@@ -151,5 +151,13 @@ const exchangeColors = {
         $('#avgPrice').text(calculateAverage(data).toFixed(2));
         $('#stdDev').text(calculateStandardDeviation(data).toFixed(2));
     }
-    
+
+    function updateRank(data) {
+        // Sort data in ascending order based on price
+        const sortedData = [...data].sort((a, b) => a.price - b.price);  
+        // Map over the sorted data to create the ranking string
+        let rankString = sortedData.map((item, index) => `${index + 1}. ${item.exchange}`).join(', ');
+        // Update the HTML to display the ranking
+        $('#rank').text(rankString);
+    }    
 });
