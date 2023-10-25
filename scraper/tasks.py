@@ -22,7 +22,7 @@ from app import db, create_app
 
 app = create_app()
 
-BINANCE_API_URL = "https://api.binance.com/api/v3/avgPrice?symbol=BTCUSDT" #avgPrice change for binance 
+BINANCE_API_URL = "https://api.binance.com/api/v3/ticker?symbol=BTCUSDT" #avgPrice change for binance 
 COINBASEPRO_API_URL = "https://api.pro.coinbase.com/products/BTC-USD/ticker"
 POLONIEX_API_URL = "https://api.poloniex.com/markets/btc_usdt/price"
 
@@ -33,11 +33,11 @@ def fetch_binance():
         data = response.json()
 
         # Log the entire response data
-        print(f"Binance API Response: {data}")  # or use a logging function if you have one set up
+        #print(f"Binance API Response: {data}")  # or use a logging function if you have one set up
 
         # Attempt to access the 'price' key with error handling
         try:
-            price_value = float(data['price'])
+            price_value = float(data['lastPrice'])
         except KeyError:
             print("Price key not found in the Binance API response!")
             return  # Exit the function/task if 'price' key is not found
