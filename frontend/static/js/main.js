@@ -154,11 +154,25 @@ const exchangeColors = {
     }
 
     function updateRank(data) {
-        // Sort data in ascending order based on price
-        const sortedData = [...data].sort((a, b) => a.price - b.price);  
-        // Map over the sorted data to create the ranking string
-        let rankString = sortedData.map((item, index) => `${index + 1}. ${item.exchange}`).join(', ');
-        // Update the HTML to display the ranking
+        //Get the latest price for each exchange
+        let latestPrices = {};
+        for (let entry of data) {
+            // Assuming each entry has fields: exchange, price, and timestamp (or a similar date field)
+            if (!latestPrices[entry.exchange] || entry.timestamp > latestPrices[entry.exchange].timestamp) {
+                latestPrices[entry.exchange] = entry;
+            }
+        }
+        
+        //Convert the object to an array
+        let latestEntries = Object.values(latestPrices);
+    
+        //Sort the latest entries in descending order based on price
+        const sorted = latestEntries.sort((a, b) => b.price - a.price); 
+    
+        //Map over the sorted data to create the ranking string
+        let rankString = sorted.map((item, index) => `${index + 1}. ${item.exchange}`).join(' ');
+    
+        // Update the HTML display
         $('#rank').text(rankString);
-    }    
+    }
 });
