@@ -95,6 +95,7 @@ const exchangeColors = {
     
                 updateRecentDataTable(data, crypto); // Update table
                 updateAnalytics(data); // Update the analytics
+                updateRank(data); //update for ranks
             },
     
             error: function(error) {
