@@ -26,6 +26,13 @@
     crossorigin="anonymous"></script>
 </head>
 <body>
+    
+    {% block loading_screen %} {% endblock %}
+    
+    {% block hero%}
+    <!-- Hero block place holder for pages with hero block -->
+    {% endblock %}
+    
     <nav class="navbar">
         <div class="nav-container">
             <a href="/" class="nav-brand">Cryptick.xyz</a>
@@ -36,10 +43,7 @@
             </ul>
         </div>
     </nav>
-
-    <h1 class="animate__animated animate__fadeIn">Cryptick | Exchange Comparison</h1>
-    <h2>BTC Price chart</h2>
-   
+    
     {% block content %}
     <!-- Default content, which will typically be replaced in templates that extend this one -->
     {% endblock %}

@@ -1,3 +1,4 @@
+//Chart.js section
 $(document).ready(function() {
     let ctx = document.getElementById('btcChart').getContext('2d');
     let datasets = [];
@@ -175,4 +176,15 @@ const exchangeColors = {
         // Update the HTML display
         $('#rank').text(rankString);
     }
-});
+
+   
+    
+});    
+
+//Loading screen section
+    
+document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(function() {
+        document.getElementById("loading-screen").classList.add("hidden");
+    }, 1500); // Adjust the delay as needed
+});     
