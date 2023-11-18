@@ -186,5 +186,5 @@ const exchangeColors = {
 document.addEventListener("DOMContentLoaded", function() {
     setTimeout(function() {
         document.getElementById("loading-screen").classList.add("hidden");
-    }, 1500); // Adjust the delay as needed
+    }, 1800); // Adjust the delay as needed
 });     
