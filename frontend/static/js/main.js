@@ -180,11 +180,20 @@ const exchangeColors = {
    
     
 });    
+//create cells for hero-section
 
-//Loading screen section
-    
 document.addEventListener("DOMContentLoaded", function() {
-    setTimeout(function() {
-        document.getElementById("loading-screen").classList.add("hidden");
-    }, 1800); // Adjust the delay as needed
-});     
+    const heroSection = document.querySelector('.hero-section');
+    
+    if (heroSection) {
+        const gridContainer = document.createElement('div');
+        gridContainer.classList.add('grid-container');
+
+        for (let i = 1; i < 16; i++) { // Adjust the number for your grid size
+            const gridCell = document.createElement('div');
+            gridContainer.appendChild(gridCell);
+        }
+
+        heroSection.appendChild(gridContainer);
+    }
+});

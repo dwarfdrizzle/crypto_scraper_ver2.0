@@ -1,7 +1,8 @@
 :root {
-  --primary-bg-color: #E6FFDD; /* primary background color */
-  --primary-color: #8e9aaf; /* primary text color */
-  --secondary-bg-color: #ffcad4; /* secondary background color */
+  --primary-bg-color: #D6E4F0; /* A muted blue */
+  --primary-color: #3A506B; /* A darker shade for text */
+  --secondary-bg-color: #A9B4C2; /* A soft gold/teal for subtlety */
+  --accent-color: #DAA520; /* An accent color, if needed */
   --font-family-sans: 'Open Sans', sans-serif;
   --font-family-mont: 'Montserrat', sans-serif;
   --nav-height: 60px; /* default navbar height */
@@ -21,15 +22,14 @@ body, h1, h2, p {
 }
 
 body {
-  background-color: #e9ecef;
-  color: #333;
+  background-color: var(--primary-bg-color);
+  color: var(--primary-color);
   font-family: var(--font-family-sans);
 }
 
 h1, h2 {
-  color: var(--primary-color);
-  padding: 16px 0;
-  font-family: var(--font-family-mont);
+  color: var(--accent-color); /* Accent color for headings */
+  /* Other styles */
 }
 
 h1 {
@@ -82,8 +82,9 @@ a, .nav-list li a, .button-primary {
 }
 
 a:hover, .nav-list li a:hover, .button-primary:hover {
-  background-color: #D1FFC2; /* Slightly lighter shade for hover */
-  transform: translateY(-3px); /* provides a subtle lift effect */
+  background-color: var(--accent-color);
+  color: var(--primary-bg-color);
+  transform: translateY(-3px);
 }
 
 .navbar, .nav-list li a:hover {
@@ -130,14 +131,69 @@ a:hover, .nav-list li a:hover, .button-primary:hover {
 }
 
 .hero-section {
-  min-height: 100vh; /* Minimum height is full viewport height */
+  min-height: 100vh;
   background-color: var(--primary-bg-color);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding-top: var(--nav-height); /* Adjust top padding to account for dynamic navbar height */
+  padding-top: var(--nav-height);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.hero-section::before div {
+  width: 100%;
+  height: 100%;
+  background-color: var(--secondary-bg-color);
+}
+
+.hero-section::before div:nth-child(odd) {
+  border-radius: 50%;
+}
+
+.hero-section::before div:nth-child(even) {
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.grid-container div {
+  width: 100%;
+  height: 100%;
+  background-color: var(--secondary-bg-color);
+}
+
+.grid-container div:nth-child(odd) {
+  border-radius: 50%; /* Circle shapes */
+}
+
+.grid-container div:nth-child(even) {
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); /* Diamond shapes */
 }
 
 @media (min-width: 992px) {
@@ -146,51 +202,7 @@ a:hover, .nav-list li a:hover, .button-primary:hover {
   }
 
   .navbar {
+    background-color: var(--secondary-bg-color);
     --nav-height: 80px; /* Adjust the value if the navbar height changes on larger screens */
   }
-}
-
-/* loading screen */
-
-.loading-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--primary-bg-color); /* Customize as needed */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-
-.loading-screen.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-/* spinner */
-
-.spinner {
-  border: 4px solid rgba(255, 255, 255, 0.3); /* Light grey border */
-  border-top: 4px solid #ff69b4; /* Pink color */
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 2s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.loading-screen {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /* ... rest of your styles ... */
 }

@@ -27,12 +27,6 @@
 </head>
 <body>
     
-    {% block loading_screen %} {% endblock %}
-    
-    {% block hero%}
-    <!-- Hero block place holder for pages with hero block -->
-    {% endblock %}
-    
     <nav class="navbar">
         <div class="nav-container">
             <a href="/" class="nav-brand">Cryptick.xyz</a>
@@ -46,8 +40,16 @@
     
     {% block content %}
     <!-- Default content, which will typically be replaced in templates that extend this one -->
+    {% endblock %}  
+    
+    {% block hero %}
+    <!-- Hero block place holder for pages with hero block -->
     {% endblock %}
-
+    
+    {% block data %}
+    <!-- Data block -->
+    {% endblock %}
+    
     <!-- Add your JS scripts at the bottom -->
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     {% block scripts %}
