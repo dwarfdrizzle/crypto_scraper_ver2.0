@@ -14,6 +14,14 @@ def display():
 def index():
     return render_template('index.html')
 
+@main.route('/about')
+def about():
+    return render_template('about.html')
+
+@main.route('/dhu')
+def dhu():
+    return render_template('dhu.html')
+
 @main.route('/<string:crypto_type>_prices', methods=['GET'])
 def get_crypto_prices(crypto_type):
     if crypto_type.lower() == 'btc':

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Head section -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HX3D3ELCKN"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-HX3D3ELCKN');
+    </script>
+    <!-- Google AdSense-->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6284049188665899"
+    crossorigin="anonymous"></script>
+    <title>Data handling and usage - Cryptick</title>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-brand">Cryptick.xyz</a>
+            <ul class="nav-list">
+                <li><a href="/">Home</a></li>
+                <li><a href="#dataAnchor">Data</a></li>
+                <li><a href="{{ url_for('main.about') }}">About</a></li>
+                <li><a href="{{ url_for('main.dhu') }}"> Data handling</a></li>
+                <!-- Add other nav items as needed -->
+            </ul>
+        </div>
+    </nav>
+    <!-- Privacy Content -->
+    <section class="dhu-section">
+        <!-- Your privacy content here -->
+        <h1> Data handling and usage</h1>
+        <h2>
+            Our Commitment
+        </h2>
+        <p>
+            At Cryptick, we value the data of our users and are committed to being transparent about how we collect, use, 
+            and share information. This commitment outlines our practices regarding data collection and 
+            usage, particularly in relation to Google Analytics and advertising.
+        </p>
+
+        <h2>
+            Data Collection and Usage
+        </h2>
+        <p>
+            Cryptick utilizes Google Analytics to gather insights about user interactions on our platform. 
+            This includes, but is not limited to:
+            <ul>
+                <li><b>User Behavior</b>: How you navigate through our site, the pages you visit, and the time spent on those pages.</li>
+                <li><b>Device and Browser Information</b>: the type of device and browser you use to access Cryptick, which helps us optimize your user experience.</li>
+                <li><b>Location data</b>: General location information to understand where our users come from, allowing us to tailor our content more effectively.</li>
+            </ul>
+            The data collected through Google Analytics helps us improve our platform, ensuring that we continually meet our users' needs and preferences.
+        </p>
+
+        <h2>
+            Advertising and Tracking
+        </h2>
+        <p>
+            To support our platform and provide a free service, Cryptick displays ads. These ads are served based on the tracking data provided by Google, which includes:
+            <ul>
+                <li><b>Ad Personalization</b>: Ads are personalized based on your previous interactions, browsing behavior, and preferences.</li>
+                <li><b>Tracking Technologies</b>: Google uses cookies and similar technologies to track user behavior and serve relevant ads.</li>
+            </ul>
+        </p>
+        <h2>
+            Data Storage and Security
+        </h2>
+        <p>
+            While Google Analytics collects and stores data on our behalf, Cryptick itself does not directly store personal user data. We rely on the robust security measures 
+            provided by Google to protect your data. We do not have access to individual user data stored by Google Analytics.
+        </p>
+        <h2>
+            Your Rights and Choices
+        </h2>
+        <p>
+            As a Cryptick user, you have certain rights and choices regarding the data collected by Google Analytics:
+            <li><b>Cookie Preferences</b>: You can adjust your browser settings to refuse cookies or to indicate when a cookie is being sent.</li>
+            <li><b>Opt-out Tools</b>: Google provides tools to opt-out of data collection and advertising personalization. More information can be 
+            found in Google's Privacy & Terms.</li>        
+        </p>
+
+
+    </section>
+
+    <!-- Footer -->
+</body>
+</html>

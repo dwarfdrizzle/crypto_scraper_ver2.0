@@ -22,25 +22,24 @@ Cryptick | Ahead of The Curve
 {% endblock %}
 
 {% block hero %}
-<section class="hero-section">
-    <div class="hero-content">
-        <h1>Cryptick | Ahead of The Curve</h1>
-        <p>Your insightful crypto analytics platform</p>
-        <div class="hero-buttons">
-            <a href="#charts" class="btn">Charts</a>
-            <a href="#analysis" class="btn">Analysis</a>
-            <a href="#data" class="btn">Data</a>
-            <!-- Placeholder buttons for future sections -->
-            <a href="#about" class="btn">About</a>
-            <a href="#privacy" class="btn">Privacy</a>
-        </div>
+<section class="hero-section">   
+    <h1>Cryptick | Ahead of The Curve</h1>
+    <p>Your insightful crypto analytics platform</p>
+    <div class="hero-buttons">
+        <a href="#charts" class="btn">Charts</a>
+        <a href="#analysis" class="btn">Analysis</a>
+        <a href="#data" class="btn">Data</a>
+        <!-- Placeholder buttons for future sections -->
+        <a href="{{ url_for('main.about') }}" class="btn">About</a>
+        <a href="{{ url_for('main.dhu') }}" class="btn">Data handling and usage</a> <!--Data handling and Usage (DHU) -->
+            <!-- <div class="grid-container"> </div> -->
     </div>
 </section>
 {% endblock %}
 
 {% block data %}
 <h1>Data</h1>
-<a id="dataAnchor"></a> <!-- Anchor for raw data scroll-->
+<a id="dataAnchor"></a> <!-- Anchor for raw data -->
 <div>
     <table class="recent-data-box">
         <thead>

@@ -183,17 +183,12 @@ const exchangeColors = {
 //create cells for hero-section
 
 document.addEventListener("DOMContentLoaded", function() {
-    const heroSection = document.querySelector('.hero-section');
-    
-    if (heroSection) {
-        const gridContainer = document.createElement('div');
-        gridContainer.classList.add('grid-container');
+    const gridContainer = document.querySelector('.hero-section .grid-container');
 
-        for (let i = 1; i < 16; i++) { // Adjust the number for your grid size
+    if (gridContainer) {
+        for (let i = 0; i < 16; i++) { // Adjust the number for your grid size
             const gridCell = document.createElement('div');
             gridContainer.appendChild(gridCell);
         }
-
-        heroSection.appendChild(gridContainer);
     }
 });
