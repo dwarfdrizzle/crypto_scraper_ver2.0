@@ -29,14 +29,15 @@
             <a href="/" class="nav-brand">Cryptick.xyz</a>
             <ul class="nav-list">
                 <li><a href="/">Home</a></li>
-                <li><a href="#dataAnchor">Data</a></li>
+                <li><a href="{{ url_for('main.about') }}">About</a></li>
+                <li><a href="{{ url_for('main.dhu') }}"> Data handling</a></li>
                 <!-- Add other nav items as needed -->
             </ul>
         </div>
     </nav>
 
     <!-- About content -->
-    <section class="about-section">
+    <section class="info-section">
         <div>
             <h1> About Cryptick </h1>
             <h2> Empowering Your Crypto Journey with Real-Time Insights </h2>

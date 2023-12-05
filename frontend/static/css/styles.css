@@ -55,6 +55,25 @@ h2 {
   color: var(--primary-color);
 }
 
+.btn {
+  background: var(--accent-color); /* Using the accent color */
+  color: #fff;
+  padding: 2px 5px;
+  border-radius: 1px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: darken(var(--accent-color), 10%); /* Darken on hover */
+}
+
+.container {
+  max-width: 1200 px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
 .recent-data-box {
   width: 100%;
   border-collapse: collapse;
@@ -89,6 +108,58 @@ a:hover, .nav-list li a:hover, .button-primary:hover {
 
 .navbar, .nav-list li a:hover {
   background-color: var(--secondary-bg-color);
+}
+
+.info-section {
+  background-color: #fff; /* For contrast against the primary background */
+  padding: 20px;
+  margin-bottom: 40px; /* Space between sections */
+  border-radius: 8px; /* Softens the corners */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+
+.info-section h1, .info-section h2 {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  color: var(--primary-color); /* Using the primary color for headers */
+}
+
+.info-section p {
+  margin-bottom: 1em;
+  line-height: 1.6; /* Enhances readability */
+  max-width: 90%; /* Wider on smaller screens */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+  text-align: justify;
+}
+
+.info-section .subsection {
+  margin-bottom: 2em;
+}
+
+.info-section .subsection h2 {
+  font-size: 1.5em;
+  margin-bottom: 0.75em;
+}
+
+.info-section .subsection p {
+  text-align: justify; /* Aligns text for a clean appearance */
+}
+
+.info-section ul {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+.info-section li {
+  margin-bottom: 1em;
+  line-height: 1.6; /* Enhances readability */
+  max-width: 90%; /* Wider on smaller screens */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+  text-align: justify;
 }
 
 .nav-container {
@@ -180,4 +251,22 @@ a:hover, .nav-list li a:hover, .button-primary:hover {
     background-color: var(--secondary-bg-color);
     --nav-height: 80px; /* Adjust the value if the navbar height changes on larger screens */
   }
+  
+  .info-section p {
+    max-width: 75%; /* Narrower on larger screens */
+  }
+
+  .info-section li {
+    max-width: 75%; 
+  }
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.container > section {
+  animation: fadeIn 1s ease-in;
 }
