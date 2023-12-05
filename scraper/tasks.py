@@ -31,11 +31,6 @@ def fetch_binance():
     with app.app_context():
         response = requests.get(BINANCE_API_URL)
         data = response.json()
-
-        # Log the entire response data
-        #print(f"Binance API Response: {data}")  # or use a logging function if you have one set up
-
-        # Attempt to access the 'price' key with error handling
         try:
             price_value = float(data['lastPrice'])
         except KeyError:
