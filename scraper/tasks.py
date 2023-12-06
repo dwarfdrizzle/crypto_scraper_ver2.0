@@ -41,6 +41,7 @@ def fetch_binance():
             exchange="Binance",
             currency_pair="BTC/USDT",
             price=price_value,
+            volume=float(data['volume']),
             timestamp=datetime.utcnow()
         )
 
@@ -59,6 +60,7 @@ def fetch_coinbase():
             exchange="Coinbase Pro",
             currency_pair="BTC/USDT",
             price=float(data['price']),
+            volume=float(data['volume']),
             timestamp=datetime.utcnow()
         )
         
@@ -79,6 +81,7 @@ def fetch_poloniex():
             exchange="Poloniex",
             currency_pair="BTC/USDT",
             price=float(data['price']),
+            volume=float(data['volume']),
             timestamp=datetime.utcnow()
         )
         

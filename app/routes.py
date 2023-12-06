@@ -27,7 +27,7 @@ def get_crypto_prices(crypto_type):
     if crypto_type.lower() == 'btc':
         try:
             prices = BTCPrice.query.order_by(BTCPrice.timestamp.desc()).limit(100).all()
-            prices_data = [{'exchange': price.exchange, 'price': price.price, 'timestamp': price.timestamp} for price in prices]
+            prices_data = [{'exchange': price.exchange, 'price': price.price, 'volume': price.volume, 'timestamp': price.timestamp} for price in prices]
             return jsonify(prices_data)
         except OperationalError:
             return jsonify({'message': 'No data available yet.'}), 200
