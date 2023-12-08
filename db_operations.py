@@ -1,6 +1,15 @@
 from app.models import BTCPrice
 from app import create_app, db
 
+def create_tables():
+    app = create_app()
+    with app.app_context():
+        db.create_all()
+        print("Tables created!")
+
+if __name__ == '__main__':
+    create_tables()
+
 # Delete oldest price records action
 def prune_oldest_records():
     record_count = BTCPrice.query.count()
@@ -22,13 +31,5 @@ def prune_oldest_records():
             db.session.commit()
             print(f"{delete_count} oldest records deleted.")
 
-def create_tables():
-    app = create_app()
-    with app.app_context():
-        db.create_all()
-        print("Tables created!")
-
-if __name__ == '__main__':
-    create_tables()
 
 # Add more database-related functions as needed
