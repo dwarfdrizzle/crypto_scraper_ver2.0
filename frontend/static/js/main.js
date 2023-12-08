@@ -121,6 +121,7 @@ const exchangeColors = {
                     <td>${crypto}</td>
                     <td>${entry.exchange}</td>
                     <td>${entry.price}</td>
+                    <td>${entry.volume}</td>
                     <td>${formattedDate}</td> <!-- Use formatted date here -->
                 </tr>
             `;
