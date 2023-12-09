@@ -26,4 +26,8 @@ beat_schedule = {
         'task': 'scraper.tasks.fetch_poloniex',
         'schedule': timedelta(seconds=1),
     },
+    'fetch_bybit-every-t-seconds': {
+        'task': 'scraper.tasks.fetch_bybit',
+        'schedule': timedelta(seconds=1),
+    },
 }

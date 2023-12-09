@@ -24,7 +24,8 @@ app = create_app()
 
 BINANCE_API_URL = "https://api.binance.com/api/v3/ticker?symbol=BTCUSDT" #avgPrice change for binance 
 COINBASEPRO_API_URL = "https://api.pro.coinbase.com/products/BTC-USD/ticker"
-POLONIEX_API_URL = "https://api.poloniex.com/markets/btc_usdt/price"
+POLONIEX_API_URL = "https://api.poloniex.com/markets/btc_usdt/price" #no api endpoint for price + volume
+BYBIT_API_URL = "https://api.bybit.com/v5/market/tickers?category=spot&symbol=BTCUSDT" #volume 24
 
 @celery.task
 def fetch_binance():
@@ -90,6 +91,24 @@ def fetch_poloniex():
         
         prune_oldest_records () #Again
 
+@celery.task
+def fetch_bybit():
+    with app.app_context():
+        response = requests.get(BYBIT_API_URL)
+        data = response.json()
+
+        price = BTCPrice(
+            exchange="Bybit",
+            currency_pair="BTC/USDT",
+            price=float(data['lastPrice']),
+            volume=float(data['volume24h']),
+            timestamp=datetime.utcnow()
+        )
+        
+        db.session.add(price)
+        db.session.commit()
+        
+        prune_oldest_records () 
         
 
 if __name__ == "__main__":
