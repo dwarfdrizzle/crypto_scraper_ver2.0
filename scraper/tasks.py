@@ -96,20 +96,24 @@ def fetch_bybit():
     with app.app_context():
         response = requests.get(BYBIT_API_URL)
         data = response.json()
+        try:
+            price_value = float(data['lastPrice'])
+        except KeyError:
+            print("Price key not found in the Binance API response!")
+            return  # Exit the function/task if 'price' key is not found
 
         price = BTCPrice(
             exchange="Bybit",
             currency_pair="BTC/USDT",
-            price=float(data['lastPrice']),
-            volume=float(data['volume24h']),
+            price=price_value,
+            volume=float(data['volume']),
             timestamp=datetime.utcnow()
         )
-        
+
         db.session.add(price)
         db.session.commit()
-        
-        prune_oldest_records () 
-        
+
+        prune_oldest_records() 
 
 if __name__ == "__main__":
     fetch_binance()
