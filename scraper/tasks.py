@@ -99,14 +99,20 @@ def fetch_bybit():
         try:
             price_value = float(data['lastPrice'])
         except KeyError:
-            print("Price key not found in the Binance API response!")
+            print("Price key not found in the Bybit API response!")
             return  # Exit the function/task if 'price' key is not found
 
+        try:
+            volume_value = float(data['volume24h'])
+        except KeyError:
+            print("Volume key not found in the Bybit API response!")
+            return
+        
         price = BTCPrice(
             exchange="Bybit",
             currency_pair="BTC/USDT",
             price=price_value,
-            volume=float(data['volume']),
+            volume=volume_value,
             timestamp=datetime.utcnow()
         )
 
