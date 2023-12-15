@@ -38,6 +38,7 @@ const exchangeColors = {
     "Poloniex": "#3357FF",
     "Bybit": "#68f597",
     "Gateio": "#464531",
+    "Bitfinex": "#A2231D",
         // ... Add more exchanges and their colors here
 };
     

@@ -22,13 +22,16 @@ from app import db, create_app
 
 app = create_app()
 
+#API URLs
 BINANCE_API_URL = "https://api.binance.com/api/v3/ticker?symbol=BTCUSDT" #avgPrice change for binance 
 COINBASEPRO_API_URL = "https://api.pro.coinbase.com/products/BTC-USD/ticker"
 POLONIEX_API_URL = "https://api.poloniex.com/markets/btc_usdt/price" #no api endpoint for price + volume
 BYBIT_API_URL = "https://api.bybit.com/v5/market/tickers?category=spot&symbol=BTCUSDT" #volume 24
 GATEIO_API_URL = "https://data.gateapi.io/api2/1/ticker/btc_usdt" #GATEIO api
+BITFINEX_API_URL = "https://api.bitfinex.com/v1/pubticker/btcusd" #BitfinexAPI 
 
-@celery.task
+
+@celery.task #Binance
 def fetch_binance():
     with app.app_context():
         response = requests.get(BINANCE_API_URL)
@@ -52,7 +55,7 @@ def fetch_binance():
 
         prune_oldest_records()  # Call the pruning func here
 
-@celery.task
+@celery.task #Coinbase
 def fetch_coinbase():
     with app.app_context():
         response = requests.get(COINBASEPRO_API_URL)
@@ -93,7 +96,7 @@ def fetch_coinbase():
         #prune_oldest_records () 
 
 
-@celery.task
+@celery.task #Bybit
 def fetch_bybit():
     with app.app_context():
         response = requests.get(BYBIT_API_URL)
@@ -120,7 +123,7 @@ def fetch_bybit():
         except (KeyError, IndexError, TypeError) as e:
             print(f"Error accessing data in the Bybit API response: {e}")
 
-@celery.task
+@celery.task #GateIO
 def fetch_gateio():
     with app.app_context():
         response = requests.get(GATEIO_API_URL)
@@ -150,9 +153,40 @@ def fetch_gateio():
 
         prune_oldest_records()  # Call the pruning func here
 
+@celery.task #Bitfinex
+def fetch_bitfinex():
+    with app.app_context():
+        response = requests.get(BITFINEX_API_URL)
+        data = response.json()
+        try:
+            price_value = float(data['last_price'])
+        except KeyError:
+            print("Price key not found in the Bitfinex API response!")
+            return  # Exit the function/task if 'price' key is not found
+        
+        try:
+            volume_value = float(data['volume'])
+        except KeyError:
+            print("Volume key not found in the Bitfinex API response!")
+            return # it should complete
+
+        price = BTCPrice(
+            exchange="Bitfinex",
+            currency_pair="BTC/USDT",
+            price=price_value,
+            volume=volume_value,
+            timestamp=datetime.utcnow()
+        )
+
+        db.session.add(price)
+        db.session.commit()
+
+        prune_oldest_records()  # Call the pruning func here
+
 if __name__ == "__main__":
     fetch_binance()
     fetch_coinbase()
     #fetch_poloniex()
     fetch_bybit()
     fetch_gateio()
+    fetch_bitfinex

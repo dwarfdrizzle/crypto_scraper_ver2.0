@@ -34,4 +34,8 @@ beat_schedule = {
         'task': 'scraper.tasks.fetch_gateio',
         'schedule': timedelta(seconds=1),
     },
+      'fetch_bitfinex-every-t-seconds': {
+        'task': 'scraper.tasks.fetch_bitfinex',
+        'schedule': timedelta(seconds=1),
+    },
 }
