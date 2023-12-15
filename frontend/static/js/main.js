@@ -36,7 +36,8 @@ const exchangeColors = {
     "Binance": "#FF5733",
     "Coinbase Pro": "#33FF57",
     "Poloniex": "#3357FF",
-    "Bybit": "#68f597"
+    "Bybit": "#68f597",
+    "GateIO": "#464531",
         // ... Add more exchanges and their colors here
 };
     

@@ -26,6 +26,7 @@ BINANCE_API_URL = "https://api.binance.com/api/v3/ticker?symbol=BTCUSDT" #avgPri
 COINBASEPRO_API_URL = "https://api.pro.coinbase.com/products/BTC-USD/ticker"
 POLONIEX_API_URL = "https://api.poloniex.com/markets/btc_usdt/price" #no api endpoint for price + volume
 BYBIT_API_URL = "https://api.bybit.com/v5/market/tickers?category=spot&symbol=BTCUSDT" #volume 24
+GATEIO_API_URL = "https://data.gateapi.io/api2/1/ticker/btc_usdt" #GATEIO api
 
 @celery.task
 def fetch_binance():
@@ -72,24 +73,25 @@ def fetch_coinbase():
 
         
 
-@celery.task
-def fetch_poloniex():
-    with app.app_context():
-        response = requests.get(POLONIEX_API_URL)
-        data = response.json()
+#@celery.task
+#d ef fetch_poloniex():
+    #with app.app_context():
+        #response = requests.get(POLONIEX_API_URL)
+        #data = response.json()
 
-        price = BTCPrice(
-            exchange="Poloniex",
-            currency_pair="BTC/USDT",
-            price=float(data['price']),
-            volume=float(data['volume']),
-            timestamp=datetime.utcnow()
-        )
+        #price = BTCPrice(
+            #exchange="Poloniex",
+            #currency_pair="BTC/USDT",
+            #price=float(data['price']),
+            #volume=float(data['volume']),
+            #timestamp=datetime.utcnow()
+        #)
         
-        db.session.add(price)
-        db.session.commit()
+        #db.session.add(price)
+        #db.session.commit()
         
-        prune_oldest_records () #Again
+        #prune_oldest_records () 
+
 
 @celery.task
 def fetch_bybit():
@@ -118,8 +120,39 @@ def fetch_bybit():
         except (KeyError, IndexError, TypeError) as e:
             print(f"Error accessing data in the Bybit API response: {e}")
 
+@celery.task
+def fetch_gateio():
+    with app.app_context():
+        response = requests.get(GATEIO_API_URL)
+        data = response.json()
+        try:
+            price_value = float(data['last'])
+        except KeyError:
+            print("Price key not found in the GATEIO API response!")
+            return  # Exit the function/task if 'price' key is not found
+        
+        try:
+            volume_value = float(data['baseVolume'])
+        except KeyError:
+            print("Volume key not found in the GATEIO API response!")
+            return # it should complete
+
+        price = BTCPrice(
+            exchange="Binance",
+            currency_pair="BTC/USDT",
+            price=price_value,
+            volume=volume_value,
+            timestamp=datetime.utcnow()
+        )
+
+        db.session.add(price)
+        db.session.commit()
+
+        prune_oldest_records()  # Call the pruning func here
+
 if __name__ == "__main__":
     fetch_binance()
     fetch_coinbase()
     #fetch_poloniex()
     fetch_bybit()
+    fetch_gateio()
