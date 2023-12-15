@@ -125,3 +125,4 @@ if __name__ == "__main__":
     fetch_binance()
     fetch_coinbase()
     fetch_poloniex()
+    fetch_bybit()
