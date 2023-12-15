@@ -30,8 +30,8 @@ beat_schedule = {
         'task': 'scraper.tasks.fetch_bybit',
         'schedule': timedelta(seconds=1),
     },
-    'fetch_Gateio-every-t-seconds': {
-        'task': 'scraper.tasks.fetch_bybit',
+    'fetch_gateio-every-t-seconds': {
+        'task': 'scraper.tasks.fetch_gateio',
         'schedule': timedelta(seconds=1),
     },
 }
