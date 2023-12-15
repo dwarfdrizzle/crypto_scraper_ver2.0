@@ -38,4 +38,8 @@ beat_schedule = {
         'task': 'scraper.tasks.fetch_bitfinex',
         'schedule': timedelta(seconds=1),
     },
+    'fetch_cryptocom-every-t-seconds': {
+        'task': 'scraper.tasks.fetch_cryptocom',
+        'schedule': timedelta(seconds=1),
+    },
 }

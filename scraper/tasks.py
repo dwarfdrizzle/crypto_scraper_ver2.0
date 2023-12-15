@@ -9,8 +9,6 @@ from db_operations import prune_oldest_records
 # Get the directory of the current script (tasks.py)
 current_directory = os.path.dirname(os.path.abspath(__file__))
 
-#sys.path.append(os.path.dirname(os.path.abspath(r'C:\Users\ewanl\Desktop\crypto_scraper\app')))
-
 # Go one level up to crypto_scraper and then append the app folder
 app_directory = os.path.join(current_directory, '..', 'app')
 # Add this directory to sys.path
@@ -29,7 +27,7 @@ POLONIEX_API_URL = "https://api.poloniex.com/markets/btc_usdt/price" #no api end
 BYBIT_API_URL = "https://api.bybit.com/v5/market/tickers?category=spot&symbol=BTCUSDT" #volume 24
 GATEIO_API_URL = "https://data.gateapi.io/api2/1/ticker/btc_usdt" #GATEIO api
 BITFINEX_API_URL = "https://api.bitfinex.com/v1/pubticker/btcusd" #BitfinexAPI 
-
+CRYPTOCOM_API_URL= "https://api.crypto.com/exchange/v1/public/get-tickers?instrument_name=BTCUSD-PERP" #crypto.com
 
 @celery.task #Binance
 def fetch_binance():
@@ -73,8 +71,6 @@ def fetch_coinbase():
         db.session.commit()
         
         prune_oldest_records() #And here
-
-        
 
 #@celery.task
 #d ef fetch_poloniex():
@@ -183,10 +179,42 @@ def fetch_bitfinex():
 
         prune_oldest_records()  # Call the pruning func here
 
+@celery.task #crypto.com
+def fetch_cryptocom():
+    with app.app_context():
+        response = requests.get(CRYPTOCOM_API_URL)
+        data = response.json()
+        try:
+            price_value = float(data['a'])
+        except KeyError:
+            print("Price key not found in the Crypto.com API response!")
+            return  # Exit the function/task if 'price' key is not found
+        
+        try:
+            volume_value = float(data['volume'])
+        except KeyError:
+            print("Volume key not found in the Crypto.com API response!")
+            return # it should complete
+
+        price = BTCPrice(
+            exchange="Crypto.com",
+            currency_pair="BTC/USDT",
+            price=price_value,
+            volume=volume_value,
+            timestamp=datetime.utcnow()
+        )
+
+        db.session.add(price)
+        db.session.commit()
+
+        prune_oldest_records()  # Call the pruning func here
+
+
 if __name__ == "__main__":
     fetch_binance()
     fetch_coinbase()
     #fetch_poloniex()
     fetch_bybit()
     fetch_gateio()
-    fetch_bitfinex
+    fetch_bitfinex()
+    fetch_cryptocom()

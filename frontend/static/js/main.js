@@ -39,6 +39,7 @@ const exchangeColors = {
     "Bybit": "#68f597",
     "Gateio": "#464531",
     "Bitfinex": "#A2231D",
+    "Crypto.com": "#3B83BD",
         // ... Add more exchanges and their colors here
 };
     
