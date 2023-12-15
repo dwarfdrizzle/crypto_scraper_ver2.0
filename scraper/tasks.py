@@ -96,33 +96,30 @@ def fetch_bybit():
     with app.app_context():
         response = requests.get(BYBIT_API_URL)
         data = response.json()
-        try:
-            price_value = float(data['lastPrice'])
-        except KeyError:
-            print("Price key not found in the Bybit API response!")
-            return  # Exit the function/task if 'price' key is not found
 
         try:
-            volume_value = float(data['volume24h'])
-        except KeyError:
-            print("Volume key not found in the Bybit API response!")
-            return
-        
-        price = BTCPrice(
-            exchange="Bybit",
-            currency_pair="BTC/USDT",
-            price=price_value,
-            volume=volume_value,
-            timestamp=datetime.utcnow()
-        )
+            # Accessing the nested 'lastPrice' within the 'list' inside 'result'
+            btc_ticker = data['result']['list'][0]  # Assuming BTCUSDT is the first item in the list
+            price_value = float(btc_ticker['lastPrice'])
 
-        db.session.add(price)
-        db.session.commit()
+            price = BTCPrice(
+                exchange="Bybit",
+                currency_pair="BTC/USDT",
+                price=price_value,
+                volume=btc_ticker.get('volume24h', 0),  # Using .get() for safe access
+                timestamp=datetime.utcnow()
+            )
 
-        prune_oldest_records() 
+            db.session.add(price)
+            db.session.commit()
+
+            prune_oldest_records()
+
+        except (KeyError, IndexError, TypeError) as e:
+            print(f"Error accessing data in the Bybit API response: {e}")
 
 if __name__ == "__main__":
     fetch_binance()
     fetch_coinbase()
-    fetch_poloniex()
+    #fetch_poloniex()
     fetch_bybit()
