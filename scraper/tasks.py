@@ -128,17 +128,17 @@ def fetch_gateio():
         try:
             price_value = float(data['last'])
         except KeyError:
-            print("Price key not found in the GATEIO API response!")
+            print("Price key not found in the GateIO API response!")
             return  # Exit the function/task if 'price' key is not found
         
         try:
             volume_value = float(data['baseVolume'])
         except KeyError:
-            print("Volume key not found in the GATEIO API response!")
+            print("Volume key not found in the GateIO API response!")
             return # it should complete
 
         price = BTCPrice(
-            exchange="Binance",
+            exchange="Gateio",
             currency_pair="BTC/USDT",
             price=price_value,
             volume=volume_value,
