@@ -181,20 +181,18 @@ def fetch_bitfinex():
 
 @celery.task #crypto.com
 def fetch_cryptocom():
-    with app.app_context():
-        response = requests.get(CRYPTOCOM_API_URL)
-        data = response.json()
-        try:
-            price_value = float(data['a'])
-        except KeyError:
-            print("Price key not found in the Crypto.com API response!")
-            return  # Exit the function/task if 'price' key is not found
-        
-        try:
-            volume_value = float(data['volume'])
-        except KeyError:
-            print("Volume key not found in the Crypto.com API response!")
-            return # it should complete
+    response = requests.get(CRYPTOCOM_API_URL)
+    data = response.json()
+
+    try:
+        btc_data = next((item for item in data['result']['data'] if item['i'] == 'BTCUSD-PERP'), None)
+
+        if btc_data is None:
+            raise ValueError("BTCUSD-PERP data not found in Crypto.com API response.")
+
+        price_value = float(btc_data['a'])  # 'a' for last price
+        volume_value = float(btc_data['v'])      # 'v' for volume
+
 
         price = BTCPrice(
             exchange="Crypto.com",
@@ -207,7 +205,11 @@ def fetch_cryptocom():
         db.session.add(price)
         db.session.commit()
 
-        prune_oldest_records()  # Call the pruning func here
+        prune_oldest_records()  # Call the pruning func here    
+        
+    except (KeyError, ValueError, TypeError) as e:
+        print(f"Error accessing data in the Crypto.com API response: {e}")
+
 
 
 if __name__ == "__main__":
