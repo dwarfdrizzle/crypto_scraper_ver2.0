@@ -330,39 +330,38 @@ a:hover, .nav-list li a:hover, .button-primary:hover {
 /* Styles for small screens */
 @media (max-width: 768px) {
   #hamburger-menu {
-      display: block;
+      display: block; /* Show hamburger icon */
   }
 
   .nav-list {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      background-color: #fff;
-      width: 100%;
-      top: 60px;
+      display: none; /* Hide nav links initially */
+      flex-direction: column; /* Align links vertically */
+      position: absolute; /* Position the dropdown menu */
+      background-color: #fff; /* Background color for dropdown */
+      width: 100%; /* Full width of the nav container */
+      top: 60px; /* Adjust based on the height of your navbar */
       left: 0;
-      z-index: 1000;
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      z-index: 1000; /* Ensure it's above other content */
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1); /* Optional: Adds a shadow for depth */
       transform: translateY(-100%); /* Start above the view */
       transition: transform 0.3s ease; /* Smooth transition for dropdown */
       overflow: hidden; /* Hide overflow */
   }
 
   .nav-list li {
-      text-align: left;
-      border-bottom: 1px solid #ddd;
+      text-align: left; /* Align text to the left */
+      border-bottom: 1px solid #ddd; /* Optional: adds a separator between links */
       opacity: 0; /* Start with invisible links */
       transform: translateY(-20px);
       transition: opacity 0.3s ease 0.3s, transform 0.3s ease 0.3s; /* Delayed transition for links */
-  }
+   }
 
   .nav-list.active {
-      transform: translateY(0); /* Dropdown in view */
+    transform: translateY(0); /* Dropdown in view */
   }
-
   .nav-list.active li {
-      opacity: 1; /* Fade in links */
-      transform: translateY(0);
-      transition-delay: 0s; /* No delay when hiding */
+    opacity: 1; /* Fade in links */
+    transform: translateY(0);
+    transition-delay: 0s; /* No delay when hiding */
   }
 }
