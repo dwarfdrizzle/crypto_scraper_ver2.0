@@ -108,12 +108,6 @@ const exchangeColors = {
             }
         });
     }
-    
-    //Burger menu toggle 
-    function toggleMenu() {
-        var navLinks = document.getElementById("nav-links");
-        navLinks.classList.toggle("active");
-    }
 
     function updateRecentDataTable(data, crypto) {
         console.log("Updating the data table...")
@@ -199,7 +193,15 @@ const exchangeColors = {
         });
     }
 
-});    
+});
+
+//Burger menu toggle 
+function toggleMenu() {
+    
+    var navLinks = document.getElementById("nav-links");
+    navLinks.classList.toggle("active");
+};
+
 //create cells for hero-section
 document.addEventListener("DOMContentLoaded", function() {
     const gridContainer = document.querySelector('.hero-section .grid-container');
@@ -209,10 +211,6 @@ document.addEventListener("DOMContentLoaded", function() {
             const gridCell = document.createElement('div');
             gridContainer.appendChild(gridCell);
         }
-    }
-
-
-
-
+    }    
 
 });
