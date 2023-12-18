@@ -1,4 +1,4 @@
-# crypto_scraper_ver1.8
+# crypto_scraper_ver2.0
 
 the stable version before converting to Heroku deployment
 functional site 
@@ -17,3 +17,8 @@ ver 1.8.7:
 - loading screen
 - hero section
 - loading screen
+
+Version 2.0:
+- New Colour scheme with new pages
+- New graphs, analysis, and data rankings
+- Added about and usage pages
