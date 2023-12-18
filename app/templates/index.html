@@ -16,7 +16,21 @@ Cryptick | Ahead of The Curve
     <p><strong>Highest-Lowest Difference:</strong> <span id="priceDifference">...</span></p>
     <p><strong>Average Price:</strong> <span id="avgPrice">...</span></p>
     <p><strong>Standard Deviation:</strong> <span id="stdDev">...</span></p>
-    <p><strong>Rank: </strong><span id ="rank"></span></p>
+    <section class="exchange-rankings">
+        <h2>Exchange Rankings</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Exchange</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody id="rankings-body">
+                <!-- Initial rows can be empty or placeholders -->
+            </tbody>
+        </table>
+    </section>
 </div>
 
 {% endblock %}
@@ -57,8 +71,6 @@ Cryptick | Ahead of The Curve
     </table>   
 </div>
 {% endblock %}
-
-
 
 {% block scripts %}
 

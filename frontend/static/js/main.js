@@ -12,7 +12,7 @@ $(document).ready(function() {
         },
         options: {
             animation: {
-                duration: 1000 //animation for 1 second
+                duration: 500 //animation for 0.5 second
             },
             scales: {
                 y: {
@@ -160,33 +160,35 @@ const exchangeColors = {
     }
 
     function updateRank(data) {
-        //Get the latest price for each exchange
         let latestPrices = {};
         for (let entry of data) {
-            // Assuming each entry has fields: exchange, price, and timestamp (or a similar date field)
             if (!latestPrices[entry.exchange] || entry.timestamp > latestPrices[entry.exchange].timestamp) {
                 latestPrices[entry.exchange] = entry;
             }
         }
-        
-        //Convert the object to an array
+    
         let latestEntries = Object.values(latestPrices);
+        const sorted = latestEntries.sort((a, b) => b.price - a.price);
     
-        //Sort the latest entries in descending order based on price
-        const sorted = latestEntries.sort((a, b) => b.price - a.price); 
+        // Get the table body element
+        let tableBody = document.getElementById('rankings-body');
+        tableBody.innerHTML = '';  // Clear current content
     
-        //Map over the sorted data to create the ranking string
-        let rankString = sorted.map((item, index) => `${index + 1}. ${item.exchange}`).join(' ');
+        // Create a new row for each entry
+        sorted.forEach((item, index) => {
+            let row = tableBody.insertRow();
+            let cellRank = row.insertCell(0);
+            let cellExchange = row.insertCell(1);
+            let cellPrice = row.insertCell(2);
     
-        // Update the HTML display
-        $('#rank').text(rankString);
+            cellRank.textContent = index + 1;
+            cellExchange.textContent = item.exchange;
+            cellPrice.textContent = item.price;
+        });
     }
-
-   
     
 });    
 //create cells for hero-section
-
 document.addEventListener("DOMContentLoaded", function() {
     const gridContainer = document.querySelector('.hero-section .grid-container');
 
