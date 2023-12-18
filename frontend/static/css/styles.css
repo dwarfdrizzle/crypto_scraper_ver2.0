@@ -75,9 +75,10 @@ h2 {
 }
 
 .exchange-rankings table {
-  width: 80%;
+  width: auto;
+  max-width: 80%;
   border-collapse: collapse;
-  margin-top: 20px;
+  margin-top: 20px auto; /* Centers the table to the page */
 }
 
 .exchange-rankings th, .exchange-rankings td {
@@ -273,7 +274,7 @@ a:hover, .nav-list li a:hover, .button-primary:hover {
   background-color: var(--accent-color); /* A different color for even cells */
 }
 
-@media (min-width: 992px) {
+@media (min-width: 768px) {
   .hero-section {
     padding-top: 0; /* If the navbar is not fixed, you can remove the padding-top at larger screens */
   }
