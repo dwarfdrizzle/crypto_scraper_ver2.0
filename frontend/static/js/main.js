@@ -108,6 +108,12 @@ const exchangeColors = {
             }
         });
     }
+    
+    //Burger menu toggle 
+    function toggleMenu() {
+        var navLinks = document.getElementById("nav-links");
+        navLinks.classList.toggle("active");
+    }
 
     function updateRecentDataTable(data, crypto) {
         console.log("Updating the data table...")
@@ -154,7 +160,7 @@ const exchangeColors = {
     }
 
     function updateAnalytics(data) {
-        $('#priceDifference').text(calculateDifference(data).toFixed(2));
+        //$('#priceDifference').text(calculateDifference(data).toFixed(2));
         $('#avgPrice').text(calculateAverage(data).toFixed(2));
         $('#stdDev').text(calculateStandardDeviation(data).toFixed(2));
     }
@@ -204,4 +210,9 @@ document.addEventListener("DOMContentLoaded", function() {
             gridContainer.appendChild(gridCell);
         }
     }
+
+
+
+
+
 });

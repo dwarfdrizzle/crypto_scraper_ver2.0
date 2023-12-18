@@ -30,7 +30,15 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="/" class="nav-brand">Cryptick.xyz</a>
-            <ul class="nav-list">
+    
+            <!-- Hamburger Icon -->
+            <div id="hamburger-menu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+    
+            <ul class="nav-list" id="nav-links">
                 <li><a href="/">Home</a></li>
                 <li><a href="#dataAnchor">Data</a></li>
                 <li><a href="{{ url_for('main.about') }}">About</a></li>
