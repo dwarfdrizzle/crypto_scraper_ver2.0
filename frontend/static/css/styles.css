@@ -325,10 +325,24 @@ a:hover, .nav-list li a:hover, .button-primary:hover {
     overflow-x: auto; /* Allows table to be scrollable horizontally */
   }
 
+}
+
+/* Styles for small screens */
+@media (max-width: 768px) {
   #hamburger-menu {
-    display: block; /* Show hamburger icon */
+      display: block;
+  }
+
+  .nav-list {
+      display: none;
+      /* other styles */
+  }
+
+  .nav-list.active {
+      display: flex;
   }
 }
+
 
 @keyframes fadeIn {
   from { opacity: 0; }
