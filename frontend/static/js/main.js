@@ -170,23 +170,29 @@ const exchangeColors = {
         let latestEntries = Object.values(latestPrices);
         const sorted = latestEntries.sort((a, b) => b.price - a.price);
     
-        // Get the table body element
-        let tableBody = document.getElementById('rankings-body');
-        tableBody.innerHTML = '';  // Clear current content
+        // Assuming the first entry has the highest price
+        const highestPrice = sorted.length > 0 ? parseFloat(sorted[0].price) : 0;
     
-        // Create a new row for each entry
+        let tableBody = document.getElementById('rankings-body');
+        tableBody.innerHTML = ''; // Clear current content
+    
         sorted.forEach((item, index) => {
             let row = tableBody.insertRow();
             let cellRank = row.insertCell(0);
             let cellExchange = row.insertCell(1);
             let cellPrice = row.insertCell(2);
+            let cellDiff = row.insertCell(3); // Cell for price difference
     
             cellRank.textContent = index + 1;
             cellExchange.textContent = item.exchange;
             cellPrice.textContent = item.price;
+    
+            // Calculate the difference and update the cell
+            let priceDiff = highestPrice - parseFloat(item.price);
+            cellDiff.textContent = priceDiff.toFixed(2); // Adjust decimal points as needed
         });
     }
-    
+
 });    
 //create cells for hero-section
 document.addEventListener("DOMContentLoaded", function() {
