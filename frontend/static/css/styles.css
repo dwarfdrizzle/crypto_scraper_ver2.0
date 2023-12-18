@@ -74,6 +74,37 @@ h2 {
   padding: 20px;
 }
 
+.exchange-rankings table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.exchange-rankings th, .exchange-rankings td {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid var(--secondary-bg-color);
+}
+
+.exchange-rankings th {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.exchange-rankings td {
+  background-color: var(--primary-bg-color);
+  color: var(--primary-color);
+}
+
+.exchange-rankings tr:nth-child(even) td {
+  background-color: var(--secondary-bg-color);
+}
+
+.exchange-rankings tr:hover td {
+  background-color: var(--accent-color);
+  color: white;
+}
+
 .recent-data-box {
   width: 100%;
   border-collapse: collapse;
@@ -259,8 +290,12 @@ a:hover, .nav-list li a:hover, .button-primary:hover {
   .info-section li {
     max-width: 75%; 
   }
-}
 
+  .exchange-rankings table {
+    width: 100%;
+    overflow-x: auto; /* Allows table to be scrollable horizontally */
+  }
+}
 
 @keyframes fadeIn {
   from { opacity: 0; }
