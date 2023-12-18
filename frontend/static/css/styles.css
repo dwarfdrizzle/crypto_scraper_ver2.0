@@ -330,25 +330,27 @@ a:hover, .nav-list li a:hover, .button-primary:hover {
 /* Styles for small screens */
 @media (max-width: 768px) {
   #hamburger-menu {
-      display: block;
+      display: block; /* Show hamburger icon */
   }
 
   .nav-list {
-      display: none;
-      /* other styles */
+      display: none; /* Hide nav links initially */
+      flex-direction: column; /* Align links vertically */
+      position: absolute; /* Position the dropdown menu */
+      background-color: #fff; /* Background color for dropdown */
+      width: 100%; /* Full width of the nav container */
+      top: 60px; /* Adjust based on the height of your navbar */
+      left: 0;
+      z-index: 1000; /* Ensure it's above other content */
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1); /* Optional: Adds a shadow for depth */
+  }
+
+  .nav-list li {
+      text-align: left; /* Align text to the left */
+      border-bottom: 1px solid #ddd; /* Optional: adds a separator between links */
   }
 
   .nav-list.active {
-      display: flex;
+      display: flex; /* Show nav links when active */
   }
-}
-
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.container > section {
-  animation: fadeIn 1s ease-in;
 }
