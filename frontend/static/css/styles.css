@@ -210,11 +210,36 @@ a:hover, .nav-list li a:hover, .button-primary:hover {
 }
 
 .nav-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 20px; /* Spacing between items */
+  display: none; /* Hide nav links initially */
+  flex-direction: column;
+  position: absolute;
+  background-color: #fff; /* Dropdown background */
+  width: 100%; /* Full width */
+  top: 60px; /* Adjust based on the navbar's height */
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  transform: translateY(-100%); /* Start off-screen */
+  transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.nav-list li {
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  opacity: 0; /*start with invisible links */
+  transform: translateY (-20px);
+  transition: opacity 0.3s ease 0.3s, transform 0.3s ease 0.3s;
+}
+
+.nav-list.active {
+  display: flex; /* Display dropdown when active */
+  transform: translateY(0);
+}
+
+.nav-list.active li {
+  opacity: 1; /* Fade in links */
+  transform: translateY(0);
+  transition-delay: 0s; /* No delay when hiding */
 }
 
 .button-primary {
@@ -277,8 +302,7 @@ a:hover, .nav-list li a:hover, .button-primary:hover {
 
 #hamburger-menu {
   cursor: pointer;
-  display: none; /* Hidden by default, shown in responsive mode */
-  /* Style for the hamburger icon */
+  display: block;
 }
 
 #hamburger-menu span {
@@ -296,19 +320,7 @@ a:hover, .nav-list li a:hover, .button-primary:hover {
   .hero-section {
     padding-top: 0; /* If the navbar is not fixed, you can remove the padding-top at larger screens */
   }
-
-  .navbar {
-    background-color: var(--secondary-bg-color);
-    --nav-height: 80px; /* Adjust the value if the navbar height changes on larger screens */
-  }
- 
-  .nav-list {
-    display: flex; /* Hide nav links initially */
-    flex-direction: column; /* Stack the links vertically */
-    width: 100%;
-    /* Additional responsive styling */
-  } 
-
+  
   .info-section p, .info-section li {
     max-width: 75%; /* Narrower on larger screens */
   }
@@ -318,44 +330,4 @@ a:hover, .nav-list li a:hover, .button-primary:hover {
     overflow-x: auto; /* Allows table to be scrollable horizontally */
   }
 
-}
-
-/* Styles for small screens */
-@media (max-width: 768px) {
-  #hamburger-menu {
-      display: block; /* Show hamburger icon */
-  }
-
-  .nav-list {
-      display: none; /* Hide nav links initially */
-      flex-direction: column; /* Align links vertically */
-      position: absolute; /* Position the dropdown menu */
-      background-color: #fff; /* Background color for dropdown */
-      width: 100%; /* Full width of the nav container */
-      top: 60px; /* Adjust based on the height of your navbar */
-      left: 0;
-      z-index: 1000; /* Ensure it's above other content */
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1); /* Optional: Adds a shadow for depth */
-      transform: translateY(-100%); /* Start above the view */
-      transition: transform 0.3s ease; /* Smooth transition for dropdown */
-      overflow: hidden; /* Hide overflow */
-  }
-
-  .nav-list li {
-      text-align: left; /* Align text to the left */
-      border-bottom: 1px solid #ddd; /* Optional: adds a separator between links */
-      opacity: 0; /* Start with invisible links */
-      transform: translateY(-20px);
-      transition: opacity 0.3s ease 0.3s, transform 0.3s ease 0.3s; /* Delayed transition for links */
-   }
-
-  .nav-list.active {
-    display: flex;
-    transform: translateY(0); /* Dropdown in view */
-  }
-  .nav-list.active li {
-    opacity: 1; /* Fade in links */
-    transform: translateY(0);
-    transition-delay: 0s; /* No delay when hiding */
-  }
 }
