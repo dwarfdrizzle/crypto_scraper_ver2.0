@@ -291,8 +291,8 @@ a:hover, .nav-list li a:hover, .button-primary:hover {
 }
 
 
-
-@media (min-width: 768px) {
+/* For larger screens */
+@media (min-width: 768px) { 
   .hero-section {
     padding-top: 0; /* If the navbar is not fixed, you can remove the padding-top at larger screens */
   }
@@ -301,23 +301,16 @@ a:hover, .nav-list li a:hover, .button-primary:hover {
     background-color: var(--secondary-bg-color);
     --nav-height: 80px; /* Adjust the value if the navbar height changes on larger screens */
   }
+ 
   .nav-list {
-    display: none; /* Hide nav links initially */
+    display: flex; /* Hide nav links initially */
     flex-direction: column; /* Stack the links vertically */
     width: 100%;
     /* Additional responsive styling */
   } 
 
-  .nav-list.active {
-    display: flex; /* Show nav links when active */
-  }
-
-  .info-section p {
+  .info-section p, .info-section li {
     max-width: 75%; /* Narrower on larger screens */
-  }
-
-  .info-section li {
-    max-width: 75%; 
   }
 
   .exchange-rankings table {
@@ -357,6 +350,7 @@ a:hover, .nav-list li a:hover, .button-primary:hover {
    }
 
   .nav-list.active {
+    display: flex;
     transform: translateY(0); /* Dropdown in view */
   }
   .nav-list.active li {
