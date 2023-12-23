@@ -12,11 +12,11 @@ Cryptick | Ahead of The Curve
 
 <!-- You can place a smooth-scroll anchor here if needed -->
 <h2>Analysis</h2>
-<div class="analytics">
+<div class="analytics data-card">
     <!-- <p><strong>Highest-Lowest Difference:</strong> <span id="priceDifference">...</span></p> -->
     <p><strong>Average Price:</strong> <span id="avgPrice">...</span></p>
     <p><strong>Standard Deviation:</strong> <span id="stdDev">...</span></p>
-    <section class="exchange-rankings">
+    <section class="exchange-rankings data-card">
         <h2>Exchange Rankings</h2>
         <table>
             <thead>
@@ -55,22 +55,24 @@ Cryptick | Ahead of The Curve
 {% block data %}
 <h1>Data</h1>
 <a id="dataAnchor"></a> <!-- Anchor for raw data -->
-<div>
-    <table class="recent-data-box">
-        <thead>
-            <tr>
-                <th>Crypto</th>
-                <th>Exchange</th>
-                <th>Price</th>
-                <th>Volume</th>
-                <th>Timestamp</th>
-            </tr>
-        </thead>
-        <tbody>
+<section class="data-card">
+    <div>
+        <table class="recent-data-box">
+            <thead>
+                <tr>
+                    <th>Crypto</th>
+                    <th>Exchange</th>
+                    <th>Price</th>
+                    <th>Volume</th>
+                    <th>Timestamp</th>
+                </tr>
+            </thead>
+            <tbody>
             <!-- Rows will be populated here via JS -->
-        </tbody>
-    </table>   
-</div>
+            </tbody>
+        </table>   
+    </div>
+</section>
 {% endblock %}
 
 {% block scripts %}
