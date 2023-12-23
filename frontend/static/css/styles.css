@@ -1,11 +1,11 @@
 :root {
-  --primary-bg-color: #D6E4F0; /* A muted blue */
-  --primary-color: #3A506B; /* A darker shade for text */
-  --secondary-bg-color: #A9B4C2; /* A soft gold/teal for subtlety */
-  --accent-color: #DAA520; /* An accent color, if needed */
-  --font-family-sans: 'Open Sans', sans-serif;
-  --font-family-mont: 'Montserrat', sans-serif;
-  --nav-height: 60px; /* default navbar height */
+  --primary-bg-color: #fff; /* White for primary background */
+  --primary-color: #000; /* Black for primary text color */
+  --secondary-bg-color: #f0f0f0; /* Light gray for secondary backgrounds */
+  --accent-color: #4CAF50; /* An accent color, choose something minimalistic */
+  --font-family-sans: 'Arial', sans-serif; /* A clean, modern sans-serif font */
+  --font-family-mont: 'Georgia', serif; /* An elegant serif font for contrast, if needed */
+  --nav-height: 60px; /* Default navbar height, adjust as needed */
 }
 
 html {
@@ -16,15 +16,21 @@ html {
   transition: all 0.3s ease;
 }
 
-body, h1, h2, p {
+h1, h2, h3 {
   margin: 0;
   padding: 0;
+  color: #333;
+}
+
+p {
+  margin-bottom: 1em;
 }
 
 body {
   background-color: var(--primary-bg-color);
   color: var(--primary-color);
   font-family: var(--font-family-sans);
+  line-height: 1.6; /* Spacing between lines of text */
 }
 
 h1, h2 {
@@ -69,6 +75,7 @@ h2 {
 }
 
 .container {
+  width: 90%;
   max-width: 1200 px;
   margin: 0 auto;
   padding: 20px;
@@ -300,20 +307,52 @@ a:hover, .nav-list li a:hover, .button-primary:hover {
   background-color: var(--accent-color); /* A different color for even cells */
 }
 
+.data-card {
+  background-color: #fff; /* White background */
+  border: 1px solid #ddd; /* Light border */
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 10px; /* Slightly rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Hamburger Menu Icon */
 #hamburger-menu {
   cursor: pointer;
-  display: block;
+  display: block; /* Always visible */
+  position: fixed; /* Fixed position */
+  top: 20px; /* Adjust as needed */
+  right: 20px;
+  z-index: 2000;
+  /* Add styling for the hamburger lines */
 }
 
 #hamburger-menu span {
   display: block;
   height: 3px;
   width: 25px;
-  background-color: #333; /* Or use your primary color */
+  background-color: var(--primary-color); /* Or use your primary color */
   margin-bottom: 4px;
   transition: all 0.3s ease;
 }
 
+/* Full-Page Overlay for Navigation */
+#nav-overlay {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  z-index: 1500; /* Behind the hamburger menu */
+  transition: all 0.3s ease;
+}
+
+/* Overlay Active State */
+#nav-overlay.active {
+  display: block;
+}
 
 /* For larger screens */
 @media (min-width: 768px) { 
