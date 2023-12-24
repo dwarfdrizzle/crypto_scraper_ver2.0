@@ -219,6 +219,8 @@ function showAnalysis() {
     toggleOverlay(overlayContent);
 };
 
+
+
 //Burger menu toggle 
 function toggleMenu() {
     var navLinks = document.getElementById("nav-links");
