@@ -204,7 +204,7 @@ function toggleOverlay(contentHtml = '') {
         overlay.innerHTML = contentHtml; // Insert new content
         overlay.classList.add("active");
     }
-};
+}
 
 //Analysis overlay
 function showAnalysis() {
@@ -228,6 +228,7 @@ function showAnalysis() {
                 </tbody>
             </table>
         </section>
+        <button onclick="toggleOverlay()">Close</button> <!-- Close button -->
     </div>
     `; // Define the content you want to display in the overlay
 
