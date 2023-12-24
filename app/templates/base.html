@@ -44,17 +44,11 @@
         <li><a href="{{ url_for('main.dhu') }}">Usage</a></li>
         <!-- Add other nav items as needed -->
     </ul>
-</div>
-
-
-    
+</div>    
     {% block content %}
-    <!-- Default content, which will typically be replaced in templates that extend this one -->
-    <div id="overlay-container" class="overlay-container">
-    <!-- Content that will be dynamically inserted goes here-->
-    </div>
+    <!-- Default content, which will typically be replaced in templates that extend this one -->  
     {% endblock %}  
-    
+
     {% block hero %}
     <!-- Hero block place holder for pages with hero block -->
     {% endblock %}
@@ -68,6 +62,10 @@
     {% block scripts %}
     <!-- Place for additional scripts in extended templates -->
     {% endblock %}
-     
+    
+    <div id="overlay-container" class="overlay-container">
+    <!-- Content that will be dynamically inserted goes here-->
+    </div>
+         
 </body>
 </html>
