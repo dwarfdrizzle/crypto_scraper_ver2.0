@@ -204,20 +204,20 @@ function toggleOverlay(contentHtml = '') {
         overlay.innerHTML = contentHtml; // Insert new content
         overlay.classList.add("active");
     }
-}
+};
 
 //Analysis overlay
 function showAnalysis() {
     var overlayContent = `
     <div class="analytics data-card">
         <p><strong>Average Price:</strong> <span id="avgPrice">...</span></p>
-        <p><strong>Standard Deviation:</strong> <span id="stdDev">...</span></p>
-        <button onclick="toggleOverlay()">Close</button> <!-- Close button -->
+        <p><strong>Standard Deviation:</strong> <span id="stdDev">...</span></p>        
     </div>
+    <button onclick="toggleOverlay()">Close</button> <!-- Close button -->
     `; // Define the content you want to display in the overlay
 
     toggleOverlay(overlayContent);
-}
+};
 
 //Burger menu toggle 
 function toggleMenu() {
