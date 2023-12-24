@@ -212,22 +212,6 @@ function showAnalysis() {
     <div class="analytics data-card">
         <p><strong>Average Price:</strong> <span id="avgPrice">...</span></p>
         <p><strong>Standard Deviation:</strong> <span id="stdDev">...</span></p>
-        <section class="exchange-rankings data-card">
-            <h2>Exchange Rankings</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Exchange</th>
-                        <th>Price</th>
-                        <th>Δ H-Current</th>
-                    </tr>
-                </thead>
-                <tbody id="rankings-body">
-                    <!-- Initial rows can be empty or placeholders -->
-                </tbody>
-            </table>
-        </section>
         <button onclick="toggleOverlay()">Close</button> <!-- Close button -->
     </div>
     `; // Define the content you want to display in the overlay

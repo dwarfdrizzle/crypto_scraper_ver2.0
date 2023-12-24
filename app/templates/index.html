@@ -11,9 +11,24 @@ Cryptick | Ahead of The Curve
 <canvas id="btcChart" width="400" height="200"></canvas>
 
 <!-- You can place a smooth-scroll anchor here if needed -->
-
-<button onlcick="showAnalysis()">Analysis</button>
-
+<h3>Rank Table</h3>
+<section class="exchange-rankings data-card">
+    <h2>Exchange Rankings</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Exchange</th>
+                <th>Price</th>
+                <th>Δ H-Current</th>
+            </tr>
+        </thead>
+        <tbody id="rankings-body">
+            <!-- Initial rows can be empty or placeholders -->
+        </tbody>
+    </table>
+</section>
+<button id="button" onlcick="showAnalysis()">View Detailed Analysis</button>
 {% endblock %}
 
 {% block hero %}
