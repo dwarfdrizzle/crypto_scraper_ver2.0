@@ -194,6 +194,45 @@ const exchangeColors = {
     }
 
 });
+//show and hide overlays, modded to show html content
+function toggleOverlay(contentHtml = '') {
+    var overlay = document.getElementById("overlay-container");
+    if (overlay.classList.contains("active")) {
+        overlay.classList.remove("active");
+        overlay.innerHTML = ''; // Clear content when hiding
+    } else {
+        overlay.innerHTML = contentHtml; // Insert new content
+        overlay.classList.add("active");
+    }
+};
+
+//Analysis overlay
+function showAnalysis() {
+    var overlayContent = `
+    <div class="analytics data-card">
+        <p><strong>Average Price:</strong> <span id="avgPrice">...</span></p>
+        <p><strong>Standard Deviation:</strong> <span id="stdDev">...</span></p>
+        <section class="exchange-rankings data-card">
+            <h2>Exchange Rankings</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Exchange</th>
+                        <th>Price</th>
+                        <th>Δ H-Current</th>
+                    </tr>
+                </thead>
+                <tbody id="rankings-body">
+                    <!-- Initial rows can be empty or placeholders -->
+                </tbody>
+            </table>
+        </section>
+    </div>
+    `; // Define the content you want to display in the overlay
+
+    toggleOverlay(overlayContent);
+}
 
 //Burger menu toggle 
 function toggleMenu() {
