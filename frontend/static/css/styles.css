@@ -255,6 +255,21 @@ a:hover, .nav-list li a:hover, .button-primary:hover {
   border-radius: 5px;
 }
 
+button {
+  padding: 10px 15px;
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  /* Additional button styling */
+}
+
+button:hover {
+  background-color: var(--accent-color);
+  /* Hover effect */
+}
+
 .section-highlight, .highlighted-section {
   border-left: 4px solid var(--primary-bg-color);
   padding-left: 10px;
