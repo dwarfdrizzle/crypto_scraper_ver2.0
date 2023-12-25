@@ -193,7 +193,10 @@ const exchangeColors = {
         });
     }
 
+    
+
 });
+
 //show and hide overlays, modded to show html content
 function toggleOverlay(contentHtml = '') {
     var overlay = document.getElementById("overlay-container");
@@ -208,18 +211,18 @@ function toggleOverlay(contentHtml = '') {
 
 //Analysis overlay
 function showAnalysis() {
+    console.log("showAnalysis called"); // Log to show when it is called
     var overlayContent = `
     <div class="analytics data-card">
-        <p><strong>Average Price:</strong> <span id="avgPrice">...</span></p>
-        <p><strong>Standard Deviation:</strong> <span id="stdDev">...</span></p>        
+    <p><strong>Average Price:</strong> <span id="avgPrice">...</span></p>
+    <p><strong>Standard Deviation:</strong> <span id="stdDev">...</span></p>        
     </div>
+            
     <button onclick="toggleOverlay()">Close</button> <!-- Close button -->
     `; // Define the content you want to display in the overlay
 
     toggleOverlay(overlayContent);
 };
-
-
 
 //Burger menu toggle 
 function toggleMenu() {
