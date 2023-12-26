@@ -217,8 +217,12 @@ function showAnalysis() {
     <p><strong>Average Price:</strong> <span id="avgPrice">...</span></p>
     <p><strong>Standard Deviation:</strong> <span id="stdDev">...</span></p>        
     </div>
-            
-    <button onclick="toggleOverlay()">Close</button> <!-- Close button -->
+
+    <button id="close-button" onclick="toggleOverlay()">
+    <svg viewBox="0 0 24 24" width="24" height="24">
+        <path d="M18 6L6 18M6 6l12 12" stroke="#fff" stroke-width="2"/>
+    </svg>
+    </button>
     `; // Define the content you want to display in the overlay
 
     toggleOverlay(overlayContent);

@@ -258,7 +258,7 @@ a:hover, .nav-list li a:hover, .button-primary:hover {
 button {
   padding: 10px 15px;
   background-color: var(--primary-color);
-  color: var(--background-color);
+  color: var(--primary-bg-color);
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -347,6 +347,34 @@ button:hover {
 .overlay-container.active {
   display: block;
   transform: translateX(0); /* Slide in */
+}
+
+/* Close button 'X' */
+#close-button {
+  font-size: 24px; /* Adjust size as needed */
+  cursor: pointer;
+  border: none;
+  background-color: var(--primary-color); /* Background color */
+  color: var(--secondary-bg-color); /* Color of the 'X' */
+  width: 40px; /* Width of the button */
+  height: 40px; /* Height of the button */
+  border-radius: 50%; /* Makes it circular */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 10px; /* Adjust position as needed */
+  right: 10px;
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Transition for spinning and background color */
+}
+
+#close-button:hover {
+  transform: rotate(180deg); /* Rotate the 'X' on hover */
+  background-color: var(--accent-color); /* Background color change on hover, similar to other buttons */
+}
+
+#close-button svg {
+  fill: currentColor; /* Inherit color from button */
 }
 
 /* Hamburger Menu Icon */
