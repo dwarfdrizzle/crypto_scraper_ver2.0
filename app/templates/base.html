@@ -42,16 +42,13 @@
         <li><a href="#dataAnchor">Data</a></li>
         <li><a href="{{ url_for('main.about') }}">About</a></li>
         <li><a href="{{ url_for('main.dhu') }}">Usage</a></li>
+        <li><a href="{{ url_for('main.mission') }}">Mission</a></li>
         <!-- Add other nav items as needed -->
     </ul>
 </div>    
     {% block content %}
     <!-- Default content, which will typically be replaced in templates that extend this one -->  
     {% endblock %}  
-
-    {% block hero %}
-    <!-- Hero block place holder for pages with hero block -->
-    {% endblock %}
     
     {% block data %}
     <!-- Data block -->

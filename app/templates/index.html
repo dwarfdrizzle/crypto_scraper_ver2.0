@@ -5,7 +5,7 @@ Cryptick | Ahead of The Curve
 {% endblock %}
 
 {% block content %}
-<h1 class="animate__animated animate__fadeIn">BTC Price Chart</h1>
+<h2 class="animate__animated animate__fadeIn">BTC Price Chart</h2>
 
 <canvas id="btcChart" width="400" height="200"></canvas>
 <!-- You can place a smooth-scroll anchor here if needed -->
@@ -30,43 +30,8 @@ Cryptick | Ahead of The Curve
 <button id="button" onclick="showAnalysis()">View Detailed Analysis</button>
 {% endblock %}
 
-{% block hero %}
-<section class="hero-section">   
-    <h1>Cryptick | Ahead of The Curve</h1>
-    <p>Your insightful crypto analytics platform</p>
-    <div class="hero-buttons">
-        <a href="#charts" class="btn">Charts</a>
-        <a href="#analysis" class="btn">Analysis</a>
-        <a href="#data" class="btn">Data</a>
-        <!-- Placeholder buttons for future sections -->
-        <a href="{{ url_for('main.about') }}" class="btn">About</a>
-        <a href="{{ url_for('main.dhu') }}" class="btn">Usage</a> <!--Data handling and Usage (DHU) -->
-            <!-- <div class="grid-container"> </div> -->
-    </div>
-</section>
-{% endblock %}
-
 {% block data %}
-<h1>Data</h1>
-<a id="dataAnchor"></a> <!-- Anchor for raw data -->
-<section class="data-card">
-    <div>
-        <table class="recent-data-box">
-            <thead>
-                <tr>
-                    <th>Crypto</th>
-                    <th>Exchange</th>
-                    <th>Price</th>
-                    <th>Volume</th>
-                    <th>Timestamp</th>
-                </tr>
-            </thead>
-            <tbody>
-            <!-- Rows will be populated here via JS -->
-            </tbody>
-        </table>   
-    </div>
-</section>
+<button id="button" onclick="showData()">View Raw Data</button>
 {% endblock %}
 
 {% block scripts %}

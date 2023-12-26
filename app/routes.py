@@ -22,6 +22,10 @@ def about():
 def dhu():
     return render_template('dhu.html')
 
+@main.route('/mission')
+def mission():
+    return render_template('mission.html')
+
 @main.route('/<string:crypto_type>_prices', methods=['GET'])
 def get_crypto_prices(crypto_type):
     if crypto_type.lower() == 'btc':

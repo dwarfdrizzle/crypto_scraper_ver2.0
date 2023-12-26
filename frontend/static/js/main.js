@@ -213,6 +213,7 @@ function toggleOverlay(contentHtml = '') {
 function showAnalysis() {
     console.log("showAnalysis called"); // Log to show when it is called
     var overlayContent = `
+    <h1>Analysis</h1>
     <div class="analytics data-card">
     <p><strong>Average Price:</strong> <span id="avgPrice">...</span></p>
     <p><strong>Standard Deviation:</strong> <span id="stdDev">...</span></p>        
@@ -225,6 +226,40 @@ function showAnalysis() {
     </button>
     `; // Define the content you want to display in the overlay
 
+    toggleOverlay(overlayContent);
+};
+
+// Show raw data card
+function showData() {
+    console.log("showData Called"); //log when asked
+    var overlayContent = `
+    <h1>Data</h1>
+    <a id="dataAnchor"></a> <!-- Anchor for raw data -->
+    <section class="data-card">
+        <div>
+            <table class="recent-data-box">
+                <thead>
+                    <tr>
+                        <th>Crypto</th>
+                        <th>Exchange</th>
+                        <th>Price</th>
+                        <th>Volume</th>
+                        <th>Timestamp</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <!-- Rows will be populated here via JS -->
+                </tbody>
+            </table>   
+        </div>
+    </section>
+    <button id="close-button" onclick="toggleOverlay()">
+    <svg viewBox="0 0 24 24" width="24" height="24">
+        <path d="M18 6L6 18M6 6l12 12" stroke="#fff" stroke-width="2"/>
+    </svg>
+    </button>
+    `; // content for raw data
+    
     toggleOverlay(overlayContent);
 };
 
