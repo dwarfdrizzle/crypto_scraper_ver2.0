@@ -1,39 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- Head section -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HX3D3ELCKN"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+{% extends "base.html" %}
 
-    gtag('config', 'G-HX3D3ELCKN');
-    </script>
-    <!-- Google AdSense-->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6284049188665899"
-    crossorigin="anonymous"></script>
-    <title>Data handling and Usage - Cryptick</title>
-</head>
-<body>
-    <!-- Navigation bar -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="/" class="nav-brand">Cryptick.xyz</a>
-            <ul class="nav-list">
-                <li><a href="/">Home</a></li>
-                <li><a href="{{ url_for('main.about') }}">About</a></li>
-                <li><a href="{{ url_for('main.dhu') }}">Usage</a></li>
-                <!-- Add other nav items as needed -->
-            </ul>
-        </div>
-    </nav>
+{% block title %}
+Data and Usage - Cryptick
+{% endblock %}
+
+{% block content %}
+<!-- Navigation bar -->
+<div>
+    <!-- Hamburger Icon -->
+    <div id="hamburger-menu" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <!-- Drop down menu -->
+    <ul class="nav-list" id="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="{{ url_for('main.about') }}">About</a></li>
+        <li><a href="{{ url_for('main.dhu') }}">Usage</a></li>
+        <li><a href="{{ url_for('main.mission') }}">Mission</a></li>
+        <!-- Add other nav items as needed -->
+    </ul>
+</div> 
     <!-- Privacy Content -->
     <section class="info-section">
         <!-- Your privacy content here -->
@@ -90,7 +78,4 @@
 
 
     </section>
-
-    <!-- Footer -->
-</body>
-</html>
+{% endblock %}

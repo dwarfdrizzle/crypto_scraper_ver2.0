@@ -20,11 +20,18 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6284049188665899"
     crossorigin="anonymous"></script>
     <title>Mission</title>
+    <!-- Favicon.png link-->
+    <link rel="icon" href="../static/images/favicon.png" type="image/png">
 </head>
 <body>
 <!-- Hero section goes here -->
-<section class="hero-section">   
-    <h1>Cryptick | Ahead of The Curve</h1>
+<section class="hero-section">
+    <div clas="logo-title-container">
+        <a href="/" class="logo">   
+            <img src="{{ url_for('static', filename='images/logohold.png') }}" alt="Logo">
+        </a>
+    </div>   
+    <h1>Cryptick | Ahead of The Curve</h1> 
     <p>Your insightful crypto analytics platform</p>
     <div class="hero-buttons">
         <a href="{{ url_for('main.index')}}" class="btn">Home</a>
@@ -34,7 +41,6 @@
             <!-- <div class="grid-container"> </div> -->
     </div>
 </section>
-
 
 </body>
 </html>
