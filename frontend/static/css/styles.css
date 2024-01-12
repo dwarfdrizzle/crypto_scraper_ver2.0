@@ -384,6 +384,33 @@ button:hover {
   /* Additional styling for your title */
 }
 
+.mission-statement svg {
+  opacity: 0;
+  transform: translateY(-20px); /* Start slightly higher */
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.mission-statement p {
+  margin-bottom: 1em;
+  line-height: 2; /* Enhances readability */
+  max-width: 60%; /* Wider on smaller screens */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+  text-align: justify;
+  font-size: 1.2 em; /* Easier to read */
+}
+
+.mission-card {
+  background-color: #fff; /* White background */
+  border: 1px solid #ddd; /* Light border */
+  padding: 25px;
+  margin-bottom: 20px;
+  border-radius: 10px; /* Slightly rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+
 /* Close button 'X' */
 #close-button {
   font-size: 24px; /* Adjust size as needed */

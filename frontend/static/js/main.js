@@ -278,6 +278,14 @@ document.addEventListener("DOMContentLoaded", function() {
             const gridCell = document.createElement('div');
             gridContainer.appendChild(gridCell);
         }
-    }    
+    }
+});
 
+window.addEventListener('scroll', () => {
+    document.querySelectorAll('.mission-statement svg').forEach(svg => {
+      if (svg.getBoundingClientRect().top < window.innerHeight) {
+        svg.style.opacity = 1;
+        svg.style.transform = 'translateY(0)';
+      }
+    });
 });
