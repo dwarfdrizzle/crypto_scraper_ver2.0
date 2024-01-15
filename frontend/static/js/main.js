@@ -31,6 +31,7 @@ $(document).ready(function() {
         }
     });
 
+
 //colour for exchanges defined
 const exchangeColors = {
     "Binance": "#FF5733",
@@ -268,6 +269,19 @@ function toggleMenu() {
     var navLinks = document.getElementById("nav-links");
     navLinks.classList.toggle("active");
 };
+    window.addEventListener('scroll', () => {
+        console.log("Scroll event triggered"); // To check if the scroll event is working
+        document.querySelectorAll('.mission-statement svg').forEach((svg, index) => {
+            console.log(`Checking SVG ${index}`); // Log each SVG being checked
+            if (svg.getBoundingClientRect().top < window.innerHeight) {
+                console.log(`Animating SVG ${index}`); // Log when an SVG should animate
+                svg.classList.add('active');
+            } else {
+                svg.classList.remove('active');
+            }
+        });
+    });
+
 
 //create cells for hero-section
 document.addEventListener("DOMContentLoaded", function() {
@@ -279,13 +293,4 @@ document.addEventListener("DOMContentLoaded", function() {
             gridContainer.appendChild(gridCell);
         }
     }
-});
-
-window.addEventListener('scroll', () => {
-    document.querySelectorAll('.mission-statement svg').forEach(svg => {
-      if (svg.getBoundingClientRect().top < window.innerHeight) {
-        svg.style.opacity = 1;
-        svg.style.transform = 'translateY(0)';
-      }
-    });
 });

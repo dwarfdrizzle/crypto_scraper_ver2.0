@@ -234,7 +234,7 @@ a:hover, .nav-list li a:hover, .button-primary:hover {
   transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition for both transform and opacity */
 }
 
-.nav-list li {
+.nav-list div {
   text-align: center;
   border-bottom: 1px solid #ddd;
   opacity: 0; /*start with invisible links */
@@ -251,14 +251,14 @@ a:hover, .nav-list li a:hover, .button-primary:hover {
   opacity: 1; /* Make it fully visible */
 }
 
-.nav-list.active li {
+.nav-list.active div {
   opacity: 1; /* Fade in links */
   transform: translateY(0);
   transition-delay: 0s; /* No delay when hiding */
 }
 
 /* Hover effect for menu items */
-.nav-list li:hover {
+.nav-list div:hover {
   background-color: #f7f7f7; /* Slight change on hover */
 }
 
@@ -362,16 +362,21 @@ button:hover {
   transform: translateX(0); /* Slide in */
 }
 
-.logo-title-container {
+.logo {
   position: relative;
+  width: auto;
+}
+
+.logo-title-container {
+  width: 200px;
+  height: auto;
   display: flex;
   align-items: center; /* Aligns items vertically in the center */
-  justify-content: flex-start; /* Aligns items to the start of the container */
+  justify-content: center;
 }
 
 .logo img {
-  max-width: 25%;
-  max-height: 25%;
+  max-width: 100%;
   height: auto; /* Keeps the aspect ratio */
   width:auto; /* Maintain width to scale */
 }
@@ -384,19 +389,22 @@ button:hover {
   /* Additional styling for your title */
 }
 
-.mission-statement svg {
-  opacity: 0;
-  transform: translateY(-20px); /* Start slightly higher */
-  transition: opacity 0.5s, transform 0.5s;
+.mission-statement {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center; /* Center items vertically in the container */
+  align-items: center; /* Center items horizontally */
+  position: relative;
+  height: 900px;
+  /* Other styles... */
 }
 
 .mission-statement p {
-  margin-bottom: 1em;
+  margin-bottom: 20px;
   line-height: 2; /* Enhances readability */
   max-width: 60%; /* Wider on smaller screens */
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 1em;
   text-align: justify;
   font-size: 1.2 em; /* Easier to read */
 }
@@ -408,6 +416,7 @@ button:hover {
   margin-bottom: 20px;
   border-radius: 10px; /* Slightly rounded corners */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  width: relative;
 }
 
 
@@ -506,4 +515,29 @@ button:hover {
     width: 100%; /* Full width on smaller screens */
     transform: scaleY(0); /* No horizontal translation needed */
   }
+
+  .recent-data-box {
+    width: 100%;
+    overflow-x: auto;  
+  }
+}
+
+@media (max-width: 753px) and (-webkit-device-pixel-ratio: 2),
+       (max-width: 753px) and (min-device-pixel-ratio: 2),
+       (max-width: 753px) and (-webkit-device-pixel-ratio: 3),
+       (max-width: 753px) and (min-device-pixel-ratio: 3),
+       (max-width: 753px) and (-webkit-device-pixel-ratio: 4),
+       (max-width: 753px) and (min-device-pixel-ratio: 4) { 
+      /* Styles for smaller, high-density screens */
+
+  .exchange-rankings table {
+    width: 100%;
+    overflow-x: auto; /* Allows table to be scrollable horizontally */
+  }
+
+  .recent-data-box {
+    width: 100%;
+    overflow-x: auto;  
+  }
+
 }

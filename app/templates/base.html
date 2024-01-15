@@ -36,6 +36,9 @@
         <a href="/" class="logo">   
             <img src="{{ url_for('static', filename='images/logohold.png') }}" alt="Logo">
         </a>
+        <a href="/">
+        <h3>CRYPTICK.XYZ</h3>
+        </a>
     </div>
     <!-- Hamburger Icon -->
     <div id="hamburger-menu" onclick="toggleMenu()">
@@ -45,10 +48,10 @@
     </div>
     <!-- Drop down menu -->
     <ul class="nav-list" id="nav-links">
-        <li><a href="/">Home</a></li>
-        <li><a href="{{ url_for('main.about') }}">About</a></li>
-        <li><a href="{{ url_for('main.dhu') }}">Usage</a></li>
-        <li><a href="{{ url_for('main.mission') }}">Mission</a></li>
+        <div><a href="/">Home</a></div>
+        <div><a href="{{ url_for('main.about') }}">About</a></div>
+        <div><a href="{{ url_for('main.dhu') }}">Usage</a></div>
+        <div><a href="{{ url_for('main.mission') }}">Mission</a></div>
         <!-- Add other nav items as needed -->
     </ul>
 </div>    
