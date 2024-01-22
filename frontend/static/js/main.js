@@ -1,4 +1,4 @@
-import Chart from 'chart.js';
+import { Chart } from 'chart.js'; // for Chart.js ver 3 or later
 import dayjs from 'dayjs';
 import 'chartjs-adapter-dayjs-4';
 import $ from 'jquery';
