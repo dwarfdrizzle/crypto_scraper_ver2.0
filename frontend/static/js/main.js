@@ -1,4 +1,6 @@
-import { Chart } from 'chart.js'; // for Chart.js ver 3 or later
+import { Chart, CategoryScale, LinearScale, PointElement, LineElement } from 'chart.js';
+
+Chart.register(CategoryScale, LinearScale, PointElement, LineElement); // for Chart.js ver 3 or later
 import dayjs from 'dayjs';
 import 'chartjs-adapter-dayjs-4';
 import $ from 'jquery';
@@ -14,23 +16,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 data: [], // Initialize with an empty dataset
                 fill: false,
                 borderColor: '#4CAF50',
-                tension: 0.1
+                tension: 0.1,
             }]
         },
         options: {
             animation: {
-                duration: 500 // 0.5 second
+                duration: 500, // 0.5 second
             },
             scales: {
                 y: {
-                    beginAtZero: false
+                    beginAtZero: false,
+                    type: 'linear',
                 },
                 x: {
                     type: 'time',
                     time: {
                         unit: 'minute',
                         displayFormats: {
-                            minute: 'HH:mm:ss'
+                            minute: 'HH:mm:ss',
                         },
                         parser: 'YYYY-MM-DDTHH:mm:ssZ',
                     }
