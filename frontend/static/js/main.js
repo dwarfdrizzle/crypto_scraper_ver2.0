@@ -1,5 +1,3 @@
-const dayjs = require("dayjs");
-
 //Chart.js section
 $(document).ready(function() {
     let ctx = document.getElementById('btcChart').getContext('2d');
