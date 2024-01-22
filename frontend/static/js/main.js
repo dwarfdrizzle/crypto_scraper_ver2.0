@@ -206,19 +206,6 @@ const exchangeColors = {
 
 });
 
-// rankings-body display on smaller screens
-data.forEach(exchange => {
-    const row = `<tr>
-        <td data-label="Rank">${exchange.rank}</td>
-        <td data-label="Exchange">${exchange.name}</td>
-        <td data-label="Price">${exchange.price}</td>
-        <td data-label="Δ H-Current">${exchange.delta}</td>
-    </tr>`;
-    // Append this row to your table's tbody
-    document.getElementById("rankings-body").innerHTML += row;
-});
-
-
 //show and hide overlays, modded to show html content
 function toggleOverlay(contentHtml = '') {
     var overlay = document.getElementById("overlay-container");
