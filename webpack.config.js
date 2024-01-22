@@ -2,10 +2,10 @@ const path = require('path');
 
 module.exports = {
   // Entry point of your application
-  entry: 'frontend/static/js/main.js', // Adjust this path to where your main JS file is located
+  entry: './frontend/static/js/main.js', // Adjust this path to where your main JS file is located
   // Output configuration
   output: {
-    path: path.resolve(__dirname, 'dist'), // The output directory
+    path: path.resolve(__dirname, 'frontend/static/dist'), // The output directory
     filename: 'bundle.js' // The name of the output file
   },
   module: {

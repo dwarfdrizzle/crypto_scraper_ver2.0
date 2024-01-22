@@ -1,6 +1,6 @@
 import Chart from 'chart.js/auto';
 import dayjs from 'dayjs';
-import 'chartjs-adapter-dayjs';
+import 'chartjs-adapter-dayjs-4';
 import $ from 'jquery';
 
 //Chart.js section
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 label: 'BTC Price',
                 data: [], // Initialize with an empty dataset
                 fill: false,
-                borderColor: '#fff',
+                borderColor: '#4CAF50',
                 tension: 0.1
             }]
         },
