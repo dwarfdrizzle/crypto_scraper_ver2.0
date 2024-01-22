@@ -521,23 +521,87 @@ button:hover {
     overflow-x: auto;  
   }
 }
-
-@media (max-width: 753px) and (-webkit-device-pixel-ratio: 2),
-       (max-width: 753px) and (min-device-pixel-ratio: 2),
-       (max-width: 753px) and (-webkit-device-pixel-ratio: 3),
-       (max-width: 753px) and (min-device-pixel-ratio: 3),
-       (max-width: 753px) and (-webkit-device-pixel-ratio: 4),
-       (max-width: 753px) and (min-device-pixel-ratio: 4) { 
+/* max-width 753 so +1 */
+@media (max-width: 754px) and (-webkit-device-pixel-ratio: 2),
+       (max-width: 754px) and (min-device-pixel-ratio: 2),
+       (max-width: 754px) and (-webkit-device-pixel-ratio: 3),
+       (max-width: 754px) and (min-device-pixel-ratio: 3),
+       (max-width: 754px) and (-webkit-device-pixel-ratio: 4),
+       (max-width: 754px) and (min-device-pixel-ratio: 4) { 
       /* Styles for smaller, high-density screens */
+    
+    .recent-data-box td:before {
+      content: attr(data-title);
+      position: absolute;
+      left: 10px;
+      font-weight: bold;
+      /* Additional styling as necessary */
+    }
+    .recent-data-box td {
+      /* Ensure there's enough space for the pseudo-content */
+      padding-left: 50%;
+      text-align: right;
+      position: relative;
+    }
 
-  .exchange-rankings table {
-    width: 100%;
-    overflow-x: auto; /* Allows table to be scrollable horizontally */
-  }
+    .exchange-rankings table, .recent-data-box {
+      width: 100%;
+      border-collapse: collapse;
+      overflow-x: auto; /* In case there's any overflow */
+      display: block; /* Makes the table behave like a block element */
+    }
 
-  .recent-data-box {
-    width: 100%;
-    overflow-x: auto;  
+    .exchange-rankings thead, .recent-data-box thead,
+    .exchange-rankings tbody, .recent-data-box tbody,
+    .exchange-rankings th, .recent-data-box th,
+    .exchange-rankings td, .recent-data-box td,
+    .exchange-rankings tr, .recent-data-box tr {
+        display: block;
+    }
+    
+    .exchange-rankings th, .recent-data-box th {
+      display: none; /* Hide column headers on small screens */
+    }
+
+    .exchange-rankings thead, .recent-data-box thead {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    .exchange-rankings tr, .recent-data-box tr {
+        border: 1px solid #ccc;
+        margin-bottom: 5px;
+    }
+
+    .exchange-rankings td, .recent-data-box td {
+      /* Each cell behaves like a block with a pseudo-label */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+        text-align: right;
+    }
+
+    .exchange-rankings td:before, .recent-data-box td:before {
+        /* Here you label each cell with the column name */
+        /* Pseudo-label derived from data-title attributes */
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .logo {
+      width: 50%; /* or any other appropriate size */
+      max-width: 150px; /* maximum size */
+      height: auto; /* maintain aspect ratio */
+      display: block;
+      margin: 0 auto; /* center the logo */
   }
 
 }

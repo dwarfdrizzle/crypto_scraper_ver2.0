@@ -1,3 +1,5 @@
+const dayjs = require("dayjs");
+
 //Chart.js section
 $(document).ready(function() {
     let ctx = document.getElementById('btcChart').getContext('2d');
@@ -23,14 +25,13 @@ $(document).ready(function() {
                     time: {
                         unit: 'minute',
                         displayFormats: {
-                            minute: 'HH:mm'
+                            minute: 'HH:mm:ss'
                         }
                     }
                 }
             }
         }
     });
-
 
 //colour for exchanges defined
 const exchangeColors = {
@@ -119,15 +120,15 @@ const exchangeColors = {
         let recentData = data.slice(-30); // This gets the last 5 entries, adjust as needed
     
         recentData.forEach(entry => {
-            let formattedDate = moment(entry.timestamp).format('YYYY-MM-DD HH:mm:ss'); // Using moment.js for formatting
+            let formattedDate = dayjs(entry.timestamp).format('YYYY-MM-DD HH:mm:ss'); // Using Day.js for formatting
             
             let row = `
                 <tr>
-                    <td>${crypto}</td>
-                    <td>${entry.exchange}</td>
-                    <td>${entry.price}</td>
-                    <td>${entry.volume}</td>
-                    <td>${formattedDate}</td> <!-- Use formatted date here -->
+                    <td data-title="Crypto">${crypto}</td>
+                    <td data-title="Exchange">${entry.exchange}</td>
+                    <td data-title="Price">${entry.price}</td>
+                    <td data-title="Volume">${entry.volume}</td>
+                    <td data-title="Timestamp">${formattedDate}</td> <!-- Use formatted date here -->
                 </tr>
             `;
             tableBody.append(row);
@@ -137,6 +138,7 @@ const exchangeColors = {
     fetchCryptoPrices();
     setInterval(fetchCryptoPrices, 1000); //fetches prices at a 1 second(s) interval
 
+    
     //Analysis Section
     function calculateDifference(data) {
         let highestPrice = Math.max(...data.map(price => price.price));
@@ -198,6 +200,19 @@ const exchangeColors = {
 
 });
 
+// rankings-body display on smaller screens
+data.forEach(exchange => {
+    const row = `<tr>
+        <td data-label="Rank">${exchange.rank}</td>
+        <td data-label="Exchange">${exchange.name}</td>
+        <td data-label="Price">${exchange.price}</td>
+        <td data-label="Δ H-Current">${exchange.delta}</td>
+    </tr>`;
+    // Append this row to your table's tbody
+    document.getElementById("rankings-body").innerHTML += row;
+});
+
+
 //show and hide overlays, modded to show html content
 function toggleOverlay(contentHtml = '') {
     var overlay = document.getElementById("overlay-container");
@@ -235,7 +250,6 @@ function showData() {
     console.log("showData Called"); //log when asked
     var overlayContent = `
     <h1>Data</h1>
-    <a id="dataAnchor"></a> <!-- Anchor for raw data -->
     <section class="data-card">
         <div>
             <table class="recent-data-box">
@@ -248,8 +262,9 @@ function showData() {
                         <th>Timestamp</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody id>
                 <!-- Rows will be populated here via JS -->
+                
                 </tbody>
             </table>   
         </div>

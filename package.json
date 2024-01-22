@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "bootstrap": "^5.3.1"
+    "bootstrap": "^5.3.1",
+    "chartjs-adapter-dayjs": "^1.0.0",
+    "dayjs": "^1.11.10"
   }
 }
