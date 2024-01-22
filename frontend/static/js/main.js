@@ -1,5 +1,10 @@
+import Chart from 'chart.js/auto';
+import dayjs from 'dayjs';
+import 'chartjs-adapter-dayjs';
+import $ from 'jquery';
+
 //Chart.js section
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
     let ctx = document.getElementById('btcChart').getContext('2d');
     let btcChart = new Chart(ctx, {
         type: 'line',
