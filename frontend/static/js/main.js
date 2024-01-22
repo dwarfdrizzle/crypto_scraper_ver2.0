@@ -1,4 +1,4 @@
-import Chart from 'chart.js/auto';
+import Chart from 'chart.js';
 import dayjs from 'dayjs';
 import 'chartjs-adapter-dayjs-4';
 import $ from 'jquery';
@@ -278,7 +278,7 @@ function toggleMenu() {
     if (navLinks) {
         navLinks.classList.toggle("active");
     }
-};
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     const menuButton = document.getElementById('hamburger-menu');
