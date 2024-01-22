@@ -1,18 +1,20 @@
 //Chart.js section
 $(document).ready(function() {
     let ctx = document.getElementById('btcChart').getContext('2d');
-    let datasets = [];
-    let uniqueTimestamps = [];
-
     let btcChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: uniqueTimestamps,
-            datasets: datasets
+            datasets: [{
+                label: 'BTC Price',
+                data: [], // Initialize with an empty dataset
+                fill: false,
+                borderColor: '#fff',
+                tension: 0.1
+            }]
         },
         options: {
             animation: {
-                duration: 500 //animation for 0.5 second
+                duration: 500 // 0.5 second
             },
             scales: {
                 y: {
@@ -24,7 +26,8 @@ $(document).ready(function() {
                         unit: 'minute',
                         displayFormats: {
                             minute: 'HH:mm:ss'
-                        }
+                        },
+                        parser: 'YYYY-MM-DDTHH:mm:ssZ',
                     }
                 }
             }
