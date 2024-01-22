@@ -274,21 +274,31 @@ function showData() {
 
 //Burger menu toggle 
 function toggleMenu() {
-    var navLinks = document.getElementById("nav-links");
-    navLinks.classList.toggle("active");
+    const navLinks = document.getElementById("nav-links");
+    if (navLinks) {
+        navLinks.classList.toggle("active");
+    }
 };
-    window.addEventListener('scroll', () => {
-        console.log("Scroll event triggered"); // To check if the scroll event is working
-        document.querySelectorAll('.mission-statement svg').forEach((svg, index) => {
-            console.log(`Checking SVG ${index}`); // Log each SVG being checked
-            if (svg.getBoundingClientRect().top < window.innerHeight) {
-                console.log(`Animating SVG ${index}`); // Log when an SVG should animate
-                svg.classList.add('active');
-            } else {
-                svg.classList.remove('active');
-            }
-        });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const menuButton = document.getElementById('hamburger-menu');
+    if (menuButton) {
+        menuButton.addEventListener('click', toggleMenu);
+    }
+});
+
+window.addEventListener('scroll', () => {
+    console.log("Scroll event triggered"); // To check if the scroll event is working
+    document.querySelectorAll('.mission-statement svg').forEach((svg, index) => {
+        console.log(`Checking SVG ${index}`); // Log each SVG being checked
+        if (svg.getBoundingClientRect().top < window.innerHeight) {
+            console.log(`Animating SVG ${index}`); // Log when an SVG should animate
+            svg.classList.add('active');
+        } else {
+            svg.classList.remove('active');
+        }
     });
+});
 
 
 //create cells for hero-section

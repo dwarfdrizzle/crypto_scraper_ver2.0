@@ -7,8 +7,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <!-- Webpack bundle dist startup-->
-    <script src="{{ url_for('static', filename='dist/bundle.js') }}"></script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HX3D3ELCKN"></script>
     <script>
@@ -37,7 +35,7 @@
         </a>
     </div>
     <!-- Hamburger Icon -->
-    <div id="hamburger-menu" onclick="toggleMenu()">
+    <div id="hamburger-menu">
         <span></span>
         <span></span>
         <span></span>
@@ -68,6 +66,9 @@
 <div id="overlay-container" class="overlay-container">
 <!-- Content that will be dynamically inserted goes here-->
 </div>
+
+<!-- Webpack bundle dist startup, put at the end to parse all html first-->
+<script src="{{ url_for('static', filename='dist/bundle.js') }}"></script>
 
 </body>
 </html>
