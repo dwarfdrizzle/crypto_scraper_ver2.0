@@ -6,11 +6,13 @@ import { format } from 'date-fns';
 import $ from 'jquery';
 
 console.log('main.js is loaded');
+let btcChart; //Declare to be global
+let uniqueTimestamps;
 
 //Chart.js section
 document.addEventListener('DOMContentLoaded', function() {
     let ctx = document.getElementById('btcChart').getContext('2d');
-    let btcChart = new Chart(ctx, {
+    btcChart = new Chart(ctx, {
         type: 'line',
         data: {
             datasets: [{
@@ -56,7 +58,7 @@ const exchangeColors = {
     "Crypto.com": "#3B83BD",
         // ... Add more exchanges and their colors here
 };
-    
+
     //fetchBTCPrices because there will be other coins in future, most recent prices
     function fetchCryptoPrices(crypto = "BTC") {
         $.ajax({
