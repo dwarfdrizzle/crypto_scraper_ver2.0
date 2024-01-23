@@ -1,6 +1,6 @@
-import { Chart, CategoryScale, LinearScale, PointElement, LineElement } from 'chart.js';
-
-Chart.register(CategoryScale, LinearScale, PointElement, LineElement); // for Chart.js ver 3 or later
+import { Chart, CategoryScale, LinearScale, PointElement, LineElement, TimeScale, TimeSeriesScale } from 'chart.js';
+//Chart.js post-3.0 need to reg component for modularity and optimisation
+Chart.register(CategoryScale, LinearScale, PointElement, LineElement, TimeScale, TimeSeriesScale); // for Chart.js ver 3 or later
 import dayjs from 'dayjs';
 import 'chartjs-adapter-dayjs-4';
 import $ from 'jquery';
