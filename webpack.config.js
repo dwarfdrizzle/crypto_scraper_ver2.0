@@ -1,28 +1,33 @@
 const path = require('path');
 
 module.exports = {
-  // Entry point of your application
-  entry: './frontend/static/js/main.js', // Adjust this path to where your main JS file is located
-  // Output configuration
+  entry: './frontend/static/js/main.js',
   output: {
-    path: path.resolve(__dirname, 'frontend/static/dist'), // The output directory
-    filename: 'bundle.js' // The name of the output file
+    path: path.resolve(__dirname, './frontend/static/dist'),
+    filename: 'bundle.js'
   },
   module: {
     rules: [
       {
-        test: /\.js$/, // Use Babel loader for JavaScript files
+        test: /\.js$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env'] // Preset used for env setup
+            presets: ['@babel/preset-env']
           }
         }
       }
     ]
   },
-  // Optional: Configure webpack-dev-server
+  resolve: {
+    alias: {
+      // Alias for Chart.js
+      'chart.js': path.resolve(__dirname, 'node_modules/chart.js'),
+      // Add an alias for the Chart.js adapter you are using
+      'chartjs-adapter-date-fns': path.resolve(__dirname, 'node_modules/chartjs-adapter-date-fns'),
+    }
+  },
   devServer: {
     contentBase: './dist',
   },

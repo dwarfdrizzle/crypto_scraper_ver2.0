@@ -9,6 +9,7 @@ crypto_scraper
 │  │  ├─ base.html
 │  │  ├─ dhu.html
 │  │  └─ index.html
+|  |  |_mission.html
 │  └─ __init__.py
 ├─ celerybeat-schedule.bak
 ├─ celerybeat-schedule.dat
@@ -23,8 +24,6 @@ crypto_scraper
 ├─ file structure
 ├─ file structure.txt
 ├─ frontend
-│  ├─ package-lock.json
-│  ├─ package.json
 │  ├─ server.js
 │  ├─ static
 │  │  ├─ css

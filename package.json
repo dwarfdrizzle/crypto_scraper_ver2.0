@@ -6,7 +6,10 @@
     "chartjs-adapter-date-fns": "^3.0.0",
     "date-fns": "^3.3.1",
     "jquery": "^3.7.1",
-    "node.js": "^0.0.1-security"
+    "jxLoader": "^0.1.1",
+    "node.js": "^0.0.1-security",
+    "timespan": "^2.3.0",
+    "uglify-js": "^3.17.4"
   },
   "devDependencies": {
     "@babel/core": "^7.23.7",
