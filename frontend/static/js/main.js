@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         displayFormats: {
                             minute: 'HH:mm:ss',
                         },
-                        parser: 'YYYY-MM-DDTHH:mm:ssZ',
                     }
                 }
             }
