@@ -1,7 +1,7 @@
 import 'chartjs-adapter-date-fns';
-import { Chart, CategoryScale, LinearScale, PointElement, LineElement, TimeScale, TimeSeriesScale } from 'chart.js';
+import { Chart, CategoryScale, LinearScale, PointElement, LineElement, TimeScale, TimeSeriesScale, LineController } from 'chart.js';
 //Chart.js post-3.0 need to reg component for modularity and optimisation
-Chart.register(CategoryScale, LinearScale, PointElement, LineElement, TimeScale, TimeSeriesScale); // for Chart.js ver 3 or later
+Chart.register(CategoryScale, LinearScale, PointElement, LineElement, TimeScale, TimeSeriesScale, LineController); // for Chart.js ver 3 or later
 import { format } from 'date-fns';
 import $ from 'jquery';
 
@@ -10,35 +10,40 @@ console.log('main.js is loaded');
 //Chart.js section
 document.addEventListener('DOMContentLoaded', function() {
     let ctx = document.getElementById('btcChart').getContext('2d');
-    let datasets = [];
-    let uniqueTimestamps = [];
-
     let btcChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: uniqueTimestamps,
-            datasets: datasets
+            datasets: [{
+                label: 'BTC Price',
+                data: [], // Initialize with an empty dataset
+                fill: false,
+                borderColor: '#4CAF50',
+                tension: 0.1,
+            }]
         },
         options: {
             animation: {
-                duration: 500 //animation for 0.5 second
+                duration: 500, // 0.5 second
             },
             scales: {
                 y: {
-                    beginAtZero: false
+                    beginAtZero: false,
+                    type: 'linear',
                 },
                 x: {
                     type: 'time',
                     time: {
                         unit: 'minute',
                         displayFormats: {
-                            minute: 'HH:mm:ss'
-                        }
+                            minute: 'HH:mm:ss',
+                        },
+                        parser: 'YYYY-MM-DDTHH:mm:ssZ',
                     }
                 }
             }
         }
     });
+
 
 //colour for exchanges defined
 const exchangeColors = {
@@ -227,10 +232,6 @@ document.addEventListener('DOMContentLoaded', function() {
         showDataButton.addEventListener('click', showData);
     }
 
-    var showAnalysisButton = document.getElementById('show-analysis-button');
-    if (showAnalysisButton){
-        showAnalysisButton.addEventListener('click', showAnalysis);
-    }
 });
 
 //Analysis overlay
