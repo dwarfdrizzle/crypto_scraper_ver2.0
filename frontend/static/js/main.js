@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
     btcChart = new Chart(ctx, {
         type: 'line',
         data: {
+            labels: uniqueTimestamps,
             datasets: [{
                 label: 'BTC Price',
-                data: [], // Initialize with an empty dataset
                 fill: false,
                 borderColor: '#4CAF50',
                 tension: 0.1,
