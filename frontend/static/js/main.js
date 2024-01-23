@@ -1,8 +1,8 @@
+import 'chartjs-adapter-date-fns';
+import { format } from 'date-fns';
 import { Chart, CategoryScale, LinearScale, PointElement, LineElement, TimeScale, TimeSeriesScale } from 'chart.js';
 //Chart.js post-3.0 need to reg component for modularity and optimisation
 Chart.register(CategoryScale, LinearScale, PointElement, LineElement, TimeScale, TimeSeriesScale); // for Chart.js ver 3 or later
-import dayjs from 'dayjs';
-import 'chartjs-adapter-dayjs-4';
 import $ from 'jquery';
 
 //Chart.js section
@@ -129,7 +129,7 @@ const exchangeColors = {
         let recentData = data.slice(-30); // This gets the last 5 entries, adjust as needed
     
         recentData.forEach(entry => {
-            let formattedDate = dayjs(entry.timestamp).format('YYYY-MM-DD HH:mm:ss'); // Using Day.js for formatting
+            let formattedDate = format(new Date(entry.timestamp), 'yyyy-MM-dd HH:mm:ss'); //using date-fns
             
             let row = `
                 <tr>
