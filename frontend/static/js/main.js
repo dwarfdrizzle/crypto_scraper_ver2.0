@@ -15,17 +15,24 @@ document.addEventListener('DOMContentLoaded', function() {
     btcChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: uniqueTimestamps,
             datasets: [{
                 label: 'BTC Price',
+                data: [], // Initialize with an empty dataset
                 fill: false,
-                borderColor: '#4CAF50',
+                borderColor: '#fff',
                 tension: 0.1,
             }]
         },
         options: {
             animation: {
                 duration: 500, // 0.5 second
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    align: 'start',
+                    position: 'top',
+                }
             },
             scales: {
                 y: {
@@ -35,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 x: {
                     type: 'time',
                     time: {
-                        unit: 'minute',
+                        unit: 'second',
                         displayFormats: {
                             minute: 'HH:mm:ss',
                         },
@@ -224,6 +231,7 @@ function toggleOverlay(contentHtml = '') {
         overlay.classList.add("active");
     }
 };
+
 
 document.addEventListener('DOMContentLoaded', function() {
     // This ensures the DOM is fully loaded before attaching the event listener.
