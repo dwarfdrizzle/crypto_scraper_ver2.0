@@ -1,7 +1,5 @@
 import 'chartjs-adapter-date-fns';
-import { Chart, CategoryScale, LinearScale, PointElement, LineElement, TimeScale, TimeSeriesScale, LineController } from 'chart.js';
-//Chart.js post-3.0 need to reg component for modularity and optimisation
-Chart.register(CategoryScale, LinearScale, PointElement, LineElement, TimeScale, TimeSeriesScale, LineController); // for Chart.js ver 3 or later
+import Chart from 'chart.js/auto';
 import { format } from 'date-fns';
 import $ from 'jquery';
 
@@ -19,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 label: 'BTC Price',
                 data: [], // Initialize with an empty dataset
                 fill: false,
-                borderColor: '#fff',
+                borderColor: '#4CAF50',
                 tension: 0.1,
             }]
         },
@@ -30,8 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
             plugins: {
                 legend: {
                     display: true,
-                    align: 'start',
-                    position: 'top',
                 }
             },
             scales: {
@@ -42,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 x: {
                     type: 'time',
                     time: {
-                        unit: 'second',
+                        unit: 'minute',
                         displayFormats: {
                             minute: 'HH:mm:ss',
                         },
