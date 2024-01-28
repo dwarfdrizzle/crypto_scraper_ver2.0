@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         options: {
             animation: {
-                duration: 500, // 0.5 second
+                duration: 300, // 0.3 second
             },
             plugins: {
                 legend: {
@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', function() {
             scales: {
                 y: {
                     beginAtZero: false,
-                    type: 'linear',
                 },
                 x: {
                     type: 'time',
@@ -232,6 +231,11 @@ document.addEventListener('DOMContentLoaded', function() {
     var showDataButton = document.getElementById('show-data-button');
     if (showDataButton) {
         showDataButton.addEventListener('click', showData);
+    }
+
+    var showAnalysisButton = document.getElementById('show-analysis-button');
+    if (showAnalysisButton) {
+        showAnalysisButton.addEventListener('click', showAnalysis);
     }
 
 });
