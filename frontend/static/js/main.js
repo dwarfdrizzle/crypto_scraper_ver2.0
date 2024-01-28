@@ -4,9 +4,6 @@ import { format } from 'date-fns';
 import $ from 'jquery';
 
 console.log('main.js is loaded');
-let btcChart; //Declare to be global
-let uniqueTimestamps;
-
 //Chart.js section
 document.addEventListener('DOMContentLoaded', function() {
     let ctx = document.getElementById('btcChart').getContext('2d');
