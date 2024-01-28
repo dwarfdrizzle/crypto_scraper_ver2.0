@@ -20,13 +20,13 @@ document.addEventListener('DOMContentLoaded', function() {
             animation: {
                 duration: 300, // 0.3 second
             },
-            plugins: {
-                legend: {
-                    display: true,
-                    position: 'top',
+            //plugins: {
+                //legend: {
+                    //display: true,
+                    //position: 'top',
 
-                }
-            },
+                //}
+            //},
             scales: {
                 y: {
                     beginAtZero: false,
