@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
             scales: {
                 y: {
                     beginAtZero: false,
+                    suggestedMin: minValue, // Set a minimum value that is lower than your lowest data point
+                    suggestedMax: maxValue, // Set a maximum value that is higher than your highest data point
                 },
                 x: {
                     type: 'time',
@@ -32,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         displayFormats: {
                             minute: 'HH:mm:ss',
                         },
+                        stepSize: 1,
                     }
                 }
             },
