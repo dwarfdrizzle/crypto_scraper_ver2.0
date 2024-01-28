@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         options: {
             animation: {
                 duration: 300, // 0.3 second
+
             },
             scales: {
                 y: {
@@ -33,12 +34,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         },
                     }
                 }
-            }
+            },
+            responsive: true,
+            maintainAspectRatio: false,
         },
         plugins: {
             legend: {
                 display: true,
-                position: 'top',
+                position: 'bottom',
             }
         },
     });
@@ -49,7 +52,7 @@ const exchangeColors = {
     
     "Binance": "#FF5733",
     "Coinbase Pro": "#33FF57",
-    //"Poloniex": "#3357FF",
+    //"Poloniex": "3357FF",
     "Bybit": "#68f597",
     "Gateio": "#464531",
     "Bitfinex": "#A2231D",
