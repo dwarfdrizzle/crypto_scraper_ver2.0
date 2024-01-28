@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
 const exchangeColors = {
     "Binance": "#FF5733",
     "Coinbase Pro": "#33FF57",
-    "Poloniex": "#3357FF",
+    //"Poloniex": "#3357FF",
     "Bybit": "#68f597",
     "Gateio": "#464531",
     "Bitfinex": "#A2231D",
@@ -227,17 +227,17 @@ function toggleOverlay(contentHtml = '') {
 
 document.addEventListener('DOMContentLoaded', function() {
     // This ensures the DOM is fully loaded before attaching the event listener.
-
     var showDataButton = document.getElementById('show-data-button');
     if (showDataButton) {
         showDataButton.addEventListener('click', showData);
     }
+});
 
+document.addEventListener('DOMContentLoaded', function() {    
     var showAnalysisButton = document.getElementById('show-analysis-button');
     if (showAnalysisButton) {
         showAnalysisButton.addEventListener('click', showAnalysis);
     }
-
 });
 
 //Analysis overlay
@@ -255,7 +255,7 @@ function showAnalysis() {
         <path d="M18 6L6 18M6 6l12 12" stroke="#fff" stroke-width="2"/>
     </svg>
     </button>
-    `; // Define the content you want to display in the overlay
+    `; // Content for the overlay
 
     toggleOverlay(overlayContent);
 };
