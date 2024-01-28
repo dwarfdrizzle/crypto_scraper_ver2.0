@@ -8,45 +8,41 @@ let btcChart; //Declare to be global
 let uniqueTimestamps;
 
 //Chart.js section
-document.addEventListener('DOMContentLoaded', function() {
+$(document).ready(function() {
     let ctx = document.getElementById('btcChart').getContext('2d');
-    btcChart = new Chart(ctx, {
+    let datasets = [];
+    let uniqueTimestamps = [];
+
+    let btcChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: uniqueTimestamps,
-            datasets: datasets,
+            datasets: datasets
         },
         options: {
             animation: {
-                duration: 300, // 0.3 second
+                duration: 500 //animation for 0.5 second
             },
-            //plugins: {
-                //legend: {
-                    //display: true,
-                    //position: 'top',
-
-                //}
-            //},
             scales: {
                 y: {
-                    beginAtZero: false,
+                    beginAtZero: false
                 },
                 x: {
                     type: 'time',
                     time: {
                         unit: 'minute',
                         displayFormats: {
-                            minute: 'HH:mm:ss',
-                        },
+                            minute: 'HH:mm:ss'
+                        }
                     }
                 }
             }
         }
     });
 
-
 //colour for exchanges defined
 const exchangeColors = {
+
     "Binance": "#FF5733",
     "Coinbase Pro": "#33FF57",
     //"Poloniex": "#3357FF",
