@@ -33,12 +33,6 @@ body {
   line-height: 1.6; /* Spacing between lines of text */
 }
 
-#btcChart {
-  width: 100%;
-  max-width: 800px; /* Adjust as needed */
-  height: auto;
-}
-
 h1, h2 {
   color: var(--accent-color); /* Accent color for headings */
   /* Other styles */
