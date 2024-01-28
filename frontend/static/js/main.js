@@ -13,13 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
     btcChart = new Chart(ctx, {
         type: 'line',
         data: {
-            datasets: [{
-                label: 'BTC Price',
-                data: [], // Initialize with an empty dataset
-                fill: false,
-                borderColor: '#4CAF50',
-                tension: 0.1,
-            }]
+            labels: uniqueTimestamps,
+            datasets: datasets,
         },
         options: {
             animation: {
@@ -28,6 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
             plugins: {
                 legend: {
                     display: true,
+                    position: 'top',
+
                 }
             },
             scales: {
