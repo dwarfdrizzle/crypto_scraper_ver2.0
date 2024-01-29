@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
             scales: {
                 y: {
                     beginAtZero: false,
-                    suggestedMin: minValue, // Set a minimum value that is lower than your lowest data point
-                    suggestedMax: maxValue, // Set a maximum value that is higher than your highest data point
+                    suggestedMin: 30000, // Set a minimum value that is lower than your lowest data point
+                    suggestedMax: 60000, // Set a maximum value that is higher than your highest data point
                 },
                 x: {
                     type: 'time',
