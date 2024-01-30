@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Default Title{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <!-- CSS, Chartjs, jQuery, and date-adapter are all in webpack bundle.js -->
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HX3D3ELCKN"></script>
     <script>
@@ -49,17 +48,14 @@
         <!-- Add other nav items as needed -->
     </ul>
 </div>    
-    {% block content %}
-    <!-- Default content, which will typically be replaced in templates that extend this one -->  
-    {% endblock %}  
     
-    {% block data %}
-    <!-- Data block -->
-    {% endblock %}
+{% block content %}
+<!-- Default content, which will typically be replaced in templates that extend this one -->  
+{% endblock %}  
     
-    {% block scripts %}
-    <!-- Place for additional scripts in extended templates -->
-    {% endblock %}
+{% block data %}
+<!-- Data block -->
+{% endblock %}
     
 <div id="overlay-container" class="overlay-container">
 <!-- Content that will be dynamically inserted goes here-->

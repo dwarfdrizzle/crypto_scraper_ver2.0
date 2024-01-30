@@ -1,13 +1,16 @@
 {
   "dependencies": {
+    "animate.css": "^4.1.1",
     "bootstrap": "^5.3.1",
     "build": "^0.1.4",
     "chart.js": "^4.4.1",
     "chartjs-adapter-date-fns": "^3.0.0",
+    "css-loader": "^6.9.1",
     "date-fns": "^3.3.1",
     "jquery": "^3.7.1",
     "jxLoader": "^0.1.1",
     "node.js": "^0.0.1-security",
+    "style-loader": "^3.3.4",
     "timespan": "^2.3.0",
     "uglify-js": "^3.17.4"
   },

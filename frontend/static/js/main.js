@@ -1,13 +1,17 @@
+import '../css/styles.css';
+import 'animate.css';
 import Chart from 'chart.js/auto';
 import $ from 'jquery';
 import 'chartjs-adapter-date-fns';
 import { format } from 'date-fns';
-
+//re run build pack after changes
 console.log('main.js is loaded');
 //Chart.js section
 document.addEventListener('DOMContentLoaded', function() {
     let ctx = document.getElementById('btcChart').getContext('2d');
-    btcChart = new Chart(ctx, {
+    let datasets = [];
+    let uniqueTimestamps = [];
+    let btcChart = new Chart(ctx, {
         type: 'line',
         data: {
             labels: uniqueTimestamps,
@@ -16,13 +20,10 @@ document.addEventListener('DOMContentLoaded', function() {
         options: {
             animation: {
                 duration: 300, // 0.3 second
-
             },
             scales: {
                 y: {
                     beginAtZero: false,
-                    suggestedMin: 30000, // Set a minimum value that is lower than your lowest data point
-                    suggestedMax: 60000, // Set a maximum value that is higher than your highest data point
                 },
                 x: {
                     type: 'time',
@@ -41,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         plugins: {
             legend: {
                 display: true,
-                position: 'bottom',
+                position: 'top',
             }
         },
     });

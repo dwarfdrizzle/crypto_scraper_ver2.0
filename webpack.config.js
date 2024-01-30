@@ -17,14 +17,16 @@ module.exports = {
             presets: ['@babel/preset-env']
           }
         }
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
   resolve: {
     alias: {
-      // Alias for Chart.js
       'chart.js': path.resolve(__dirname, 'node_modules/chart.js'),
-      // Add an alias for the Chart.js adapter you are using
       'chartjs-adapter-date-fns': path.resolve(__dirname, 'node_modules/chartjs-adapter-date-fns'),
     }
   },
