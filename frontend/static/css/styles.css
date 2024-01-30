@@ -39,6 +39,11 @@ body {
   height: 400px;
 }
 
+#chart-container {
+  width: 100%; /* Adjust as needed */
+  height: 600px; /* Adjust as needed */
+}
+
 h1, h2 {
   color: var(--accent-color); /* Accent color for headings */
   /* Other styles */
