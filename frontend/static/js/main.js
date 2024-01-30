@@ -1,7 +1,7 @@
-import 'chartjs-adapter-date-fns';
 import Chart from 'chart.js/auto';
-import { format } from 'date-fns';
 import $ from 'jquery';
+import 'chartjs-adapter-date-fns';
+import { format } from 'date-fns';
 
 console.log('main.js is loaded');
 //Chart.js section
