@@ -432,7 +432,7 @@ button:hover {
 
 
 /* Close button 'X' */
-#close-button {
+.close-button {
   font-size: 24px; /* Adjust size as needed */
   cursor: pointer;
   border: none;
@@ -450,12 +450,12 @@ button:hover {
   transition: transform 0.3s ease, background-color 0.3s ease; /* Transition for spinning and background color */
 }
 
-#close-button:hover {
+.close-button:hover {
   transform: rotate(180deg); /* Rotate the 'X' on hover */
   background-color: var(--accent-color); /* Background color change on hover, similar to other buttons */
 }
 
-#close-button svg {
+.close-button svg {
   fill: currentColor; /* Inherit color from button */
 }
 

@@ -4,9 +4,12 @@ import Chart from 'chart.js/auto';
 import $ from 'jquery';
 import 'chartjs-adapter-date-fns';
 import { format } from 'date-fns';
-//re run build pack after changes
+import { Button } from 'bootstrap';
+
+//re run build pack after changes everytime 'npm run build'
 console.log('main.js is loaded');
 //Chart.js section
+
 document.addEventListener('DOMContentLoaded', function() {
     let ctx = document.getElementById('btcChart').getContext('2d');
     let datasets = [];
@@ -254,7 +257,7 @@ function showAnalysis() {
     <p><strong>Standard Deviation:</strong> <span id="stdDev">...</span></p>        
     </div>
 
-    <button id="close-button" onclick="toggleOverlay()">
+    <button class="close-button">
     <svg viewBox="0 0 24 24" width="24" height="24">
         <path d="M18 6L6 18M6 6l12 12" stroke="#fff" stroke-width="2"/>
     </svg>
@@ -262,6 +265,13 @@ function showAnalysis() {
     `; // Content for the overlay
 
     toggleOverlay(overlayContent);
+    // Set up the event listener for all elements with class 'close-button'
+    var closeButtons = document.querySelectorAll('.close-button');
+    closeButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            toggleOverlay(); // Call toggleOverlay when a close button is clicked
+        });
+    });
 };
 
 
@@ -289,7 +299,7 @@ function showData() {
             </table>   
         </div>
     </section>
-    <button id="close-button" onclick="toggleOverlay()">
+    <button class="close-button">
     <svg viewBox="0 0 24 24" width="24" height="24">
         <path d="M18 6L6 18M6 6l12 12" stroke="#fff" stroke-width="2"/>
     </svg>
@@ -297,6 +307,13 @@ function showData() {
     `; // content for raw data
     
     toggleOverlay(overlayContent);
+    // Set up the event listener for all elements with class 'close-button'
+    var closeButtons = document.querySelectorAll('.close-button');
+    closeButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            toggleOverlay(); // Call toggleOverlay when a close button is clicked
+        });
+    });
 };
 
 //Burger menu toggle 
