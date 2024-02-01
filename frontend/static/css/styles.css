@@ -613,6 +613,12 @@ button:hover {
       height: auto; /* maintain aspect ratio */
       display: block;
       margin: 0 auto; /* center the logo */
-  }
-
-}
+    }
+  
+    #hero-logo {
+      vw: 30%; /* viewport look instead */
+      vh: 30%;
+      display: block;
+      margin: 0 auto; /* center logo */
+      /* specific to hero section opening logo */
+    }
