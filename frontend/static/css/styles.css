@@ -533,8 +533,13 @@ button:hover {
   }
 }
 /* max-width 915 + 1 to fit larger densities*/
-@media (max-width: 916px) and (min-device-pixel-ratio: 2) {
-      /* Styles for smaller, high-density screens; simplified */
+@media (max-width: 916px) and (-webkit-device-pixel-ratio: 2),
+       (max-width: 916px) and (min-device-pixel-ratio: 2),
+       (max-width: 916px) and (-webkit-device-pixel-ratio: 3),
+       (max-width: 916px) and (min-device-pixel-ratio: 3),
+       (max-width: 916px) and (-webkit-device-pixel-ratio: 4),
+       (max-width: 916px) and (min-device-pixel-ratio: 4) { 
+      /* Styles for smaller, high-density screens */
     
     .recent-data-box td:before {
       content: attr(data-title);
