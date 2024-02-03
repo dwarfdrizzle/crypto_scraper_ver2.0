@@ -532,14 +532,9 @@ button:hover {
     overflow-x: auto;  
   }
 }
-/* max-width 753 so +1 */
-@media (max-width: 754px) and (-webkit-device-pixel-ratio: 2),
-       (max-width: 754px) and (min-device-pixel-ratio: 2),
-       (max-width: 754px) and (-webkit-device-pixel-ratio: 3),
-       (max-width: 754px) and (min-device-pixel-ratio: 3),
-       (max-width: 754px) and (-webkit-device-pixel-ratio: 4),
-       (max-width: 754px) and (min-device-pixel-ratio: 4) { 
-      /* Styles for smaller, high-density screens */
+/* max-width 915 + 1 to fit larger densities*/
+@media (max-width: 916px) and (min-device-pixel-ratio: 2) {
+      /* Styles for smaller, high-density screens; simplified */
     
     .recent-data-box td:before {
       content: attr(data-title);
@@ -621,5 +616,10 @@ button:hover {
       display: block;
       margin: 0 auto; /* center logo */
       /* specific to hero section opening logo */
+    }
+
+    .mission-statement {
+      height: auto;
+      display: block;
     }
        }

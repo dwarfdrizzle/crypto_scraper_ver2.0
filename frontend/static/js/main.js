@@ -4,7 +4,6 @@ import Chart from 'chart.js/auto';
 import $ from 'jquery';
 import 'chartjs-adapter-date-fns';
 import { format } from 'date-fns';
-import { Button } from 'bootstrap';
 
 //re run build pack after changes everytime 'npm run build'
 console.log('main.js is loaded');
@@ -22,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         options: {
             animation: {
-                duration: 300, // 0.3 second
+                duration: 100, // 0.1 second
             },
             scales: {
                 y: {
