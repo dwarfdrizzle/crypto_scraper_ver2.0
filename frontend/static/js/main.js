@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         options: {
             animation: {
-                duration: 100, // 0.1 second
+                duration: 400, // 0.4 second otherwise too quick 
             },
             scales: {
                 y: {
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             responsive: true,
             maintainAspectRatio: false,
-            spanGaps: true, // missing data points skipped snd connected
+            spanGaps: true, // missing data points skipped and connected
         },
         plugins: {
             legend: {
