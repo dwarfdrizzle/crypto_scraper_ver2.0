@@ -40,11 +40,12 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             responsive: true,
             maintainAspectRatio: false,
+            spanGaps: true, // missing data points skipped snd connected
         },
         plugins: {
             legend: {
                 display: true,
-                position: 'top',
+                position: 'top', 
             }
         },
     });
