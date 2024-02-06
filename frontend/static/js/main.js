@@ -226,23 +226,30 @@ const exchangeColors = {
                 
     // Calculate the actual boundaries that we are setting in the chart
     function calculateBounds(dataSets) {
-        // Check if dataSets is empty or undefined
-        if (!dataSets || dataSets.length === 0 || dataSets.every(set => set.data.length === 0)) {
-            // Return default bounds or sensible bounds if there's no data
-            return { lower: 0, upper: 1 };
+        let allDataPoints = dataSets.reduce((acc, set) => acc.concat(set.data), []);
+        if (allDataPoints.length === 0) {
+            return { lower: 0, upper: 1 }; // Default bounds if no data is available
         }
     
-        let allDataPoints = dataSets.reduce((acc, set) => acc.concat(set.data), []);
         let min = Math.min(...allDataPoints);
         let max = Math.max(...allDataPoints);
     
-        // Handle the case where all data points are the same
-        if (min === max) {
-            min -= 1; // Adjust downwards a bit
-            max += 1; // Adjust upwards a bit
+        // Ensure there's a minimum range to prevent too tight bounds for very similar values
+        let range = max - min;
+        if (range === 0) {
+            // Apply a default minimal range to avoid min and max being the same
+            min -= 1;
+            max += 1;
+            range = 2;
         }
     
-        let margin = (max - min) * 0.1; // Calculate margins as a percentage of the range
+        // Calculate margin as a percentage of the range
+        let margin = range * 0.1; // Adjust this percentage to control tightness
+    
+        // Apply a maximum limit to the margin if needed to prevent overly large ranges
+        let maxMargin = range * 0.2; // Example: limit margin to not exceed 20% of the data range
+        margin = Math.min(margin, maxMargin);
+    
         return {
             lower: min - margin,
             upper: max + margin
