@@ -242,22 +242,22 @@ const exchangeColors = {
 });
 
 // Assume fetchDataAsync is a function that fetches data and returns a promise
-fetchDataAsync().then(data => {
-    if (data && data.datasets.length > 0) {
+//fetchDataAsync().then(data => {
+    //if (data && data.datasets.length > 0) {
         // Proceed with updating the chart
-        let bounds = calculateBounds(data.datasets);
-        btcChart.options.scales.y.min = bounds.lower;
-        btcChart.options.scales.y.max = bounds.upper;
+        //let bounds = calculateBounds(data.datasets);
+        //btcChart.options.scales.y.min = bounds.lower;
+        //btcChart.options.scales.y.max = bounds.upper;
 
         // Assuming updateChartData is a function that updates the chart with new data
-        updateChartData(data.datasets, data.labels);
-    } else {
+        //updateChartData(data.datasets, data.labels);
+    //} else {
         // Handle the case where no data is available
-        console.log("No data available for chart update.");
-    }
-}).catch(error => {
-    console.error("Failed to fetch data:", error);
-});
+        //console.log("No data available for chart update.");
+    //}
+//}).catch(error => {
+    //console.error("Failed to fetch data:", error);
+//});
 
 
 //show and hide overlays, modded to show html content
