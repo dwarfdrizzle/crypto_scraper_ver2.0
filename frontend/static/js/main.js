@@ -234,25 +234,13 @@ const exchangeColors = {
         let min = Math.min(...allDataPoints);
         let max = Math.max(...allDataPoints);
     
-        // Ensure there's a minimum range to prevent too tight bounds for very similar values
-        let range = max - min;
-        if (range === 0) {
-            // Apply a default minimal range to avoid min and max being the same
-            min -= 1;
-            max += 1;
-            range = 2;
-        }
-    
-        // Calculate margin as a percentage of the range
-        let margin = range * 0.1; // Adjust this percentage to control tightness
-    
-        // Apply a maximum limit to the margin if needed to prevent overly large ranges
-        let maxMargin = range * 0.2; // Example: limit margin to not exceed 20% of the data range
-        margin = Math.min(margin, maxMargin);
+        // Calculate margins directly based on min and max values
+        let marginLower = min * 0.1; // 10% of the minimum value
+        let marginUpper = max * 0.1; // 10% of the maximum value
     
         return {
-            lower: min - margin,
-            upper: max + margin
+            lower: min - marginLower, // 10% lower than the minimum data point
+            upper: max + marginUpper  // 10% higher than the maximum data point
         };
     }
 });
