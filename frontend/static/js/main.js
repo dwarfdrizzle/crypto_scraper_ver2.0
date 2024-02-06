@@ -121,11 +121,14 @@ const exchangeColors = {
     
                 // Update chart options with new bounds
                 if (bounds) {
-                    btcChart.options.scales.y.min = bounds.lower;
-                    btcChart.options.scales.y.max = bounds.upper;
+                    // Use suggestedMin and suggestedMax for a softer enforcement of bounds
+                    btcChart.options.scales.y.suggestedMin = bounds.lower;
+                    btcChart.options.scales.y.suggestedMax = bounds.upper;
                 } else {
-                    // Optionally, reset to default behavior or handle differently
+                    // Optionally, handle the case where bounds couldn't be calculated
+                    // This might involve setting default values or leaving the scale as auto-adjusting
                 }
+                
                 // Update the labels and refresh the chart
                 btcChart.data.labels = uniqueTimestamps;
                 btcChart.update();
@@ -230,28 +233,21 @@ const exchangeColors = {
     // Calculate the actual boundaries that we are setting in the chart
     function calculateBounds(dataSets) {
         let allDataPoints = dataSets.reduce((acc, set) => acc.concat(set.data), []);
+        
         if (allDataPoints.length === 0) {
-            // Instead of setting arbitrary bounds, consider not setting bounds at all
-            // and let Chart.js handle it based on the actual data once available.
-            return null; // Indicate that no valid bounds could be calculated.
+            return { lower: 0, upper: 1 }; // Fallback bounds
         }
     
         let min = Math.min(...allDataPoints);
         let max = Math.max(...allDataPoints);
     
-        // Ensure there's a buffer if all values are the same
-        if (min === max) {
-            let adjustment = min * 0.1 || 1; // Adjust by 10% or by a unit if min is 0
-            min -= adjustment;
-            max += adjustment;
-        }
+        // Calculate the 10% padding
+        let margin = (max - min) * 0.1 || 1; // Ensure there's always a margin
     
-        let marginLower = min * 0.1; // 10% of the minimum value
-        let marginUpper = max * 0.1; // 10% of the maximum value
-    
+        // Adjust min and max with the calculated margin
         return {
-            lower: min - marginLower,
-            upper: max + marginUpper
+            lower: min - margin,
+            upper: max + margin
         };
     }
 });
