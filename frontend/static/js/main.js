@@ -120,14 +120,8 @@ const exchangeColors = {
                 let bounds = calculateBounds(btcChart.data.datasets);
     
                 // Update chart options with new bounds
-                if (bounds) {
-                    // Use suggestedMin and suggestedMax for a softer enforcement of bounds
-                    btcChart.options.scales.y.suggestedMin = bounds.lower;
-                    btcChart.options.scales.y.suggestedMax = bounds.upper;
-                } else {
-                    // Optionally, handle the case where bounds couldn't be calculated
-                    // This might involve setting default values or leaving the scale as auto-adjusting
-                }
+                btcChart.options.scales.y.min = bounds.lower;
+                btcChart.options.scales.y.max = bounds.upper;
                 
                 // Update the labels and refresh the chart
                 btcChart.data.labels = uniqueTimestamps;
@@ -233,21 +227,16 @@ const exchangeColors = {
     // Calculate the actual boundaries that we are setting in the chart
     function calculateBounds(dataSets) {
         let allDataPoints = dataSets.reduce((acc, set) => acc.concat(set.data), []);
-        
         if (allDataPoints.length === 0) {
-            return { lower: 0, upper: 1 }; // Fallback bounds
+            return { lower: 0, upper: 1 }; // Default bounds if no data is available
         }
     
         let min = Math.min(...allDataPoints);
         let max = Math.max(...allDataPoints);
     
-        // Calculate the 10% padding
-        let margin = (max - min) * 0.1 || 1; // Ensure there's always a margin
-    
-        // Adjust min and max with the calculated margin
         return {
-            lower: min - margin,
-            upper: max + margin
+            lower: min * 0.9, // Scale down the minimum by 10%
+            upper: max * 1.1  // Scale up the maximum by 10%
         };
     }
 });
