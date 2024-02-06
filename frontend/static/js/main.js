@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let ctx = document.getElementById('btcChart').getContext('2d');
     let datasets = [];
     let uniqueTimestamps = [];
+    // initialise chart without bounds first
     let btcChart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -109,12 +110,19 @@ const exchangeColors = {
                         });
                     }
                 });
-    
                 // Remove any extra datasets if they exist
                 while (btcChart.data.datasets.length > uniqueExchanges.length) {
                     btcChart.data.datasets.pop();
                 }
+                
+                // Recalculate bounds based on the updated datasets, update boundaries on Y axis
+                console.log(btcChart.data.datasets);
+                let bounds = calculateBounds(btcChart.data.datasets);
     
+                // Update chart options with new bounds
+                btcChart.options.scales.y.min = bounds.lower;
+                btcChart.options.scales.y.max = bounds.upper;
+                
                 // Update the labels and refresh the chart
                 btcChart.data.labels = uniqueTimestamps;
                 btcChart.update();
@@ -122,6 +130,7 @@ const exchangeColors = {
                 updateRecentDataTable(data, crypto); // Update table
                 updateAnalytics(data); // Update the analytics
                 updateRank(data); //update for ranks
+
             },
     
             error: function(error) {
@@ -214,10 +223,51 @@ const exchangeColors = {
             cellDiff.textContent = priceDiff.toFixed(2); // Adjust decimal points as needed
         });
     }
-
+                
+    // Calculate the actual boundaries that we are setting in the chart
+    function calculateBounds(dataSets) {
+        // Check if dataSets is empty or undefined
+        if (!dataSets || dataSets.length === 0 || dataSets.every(set => set.data.length === 0)) {
+            // Return default bounds or sensible bounds if there's no data
+            return { lower: 0, upper: 1 };
+        }
     
-
+        let allDataPoints = dataSets.reduce((acc, set) => acc.concat(set.data), []);
+        let min = Math.min(...allDataPoints);
+        let max = Math.max(...allDataPoints);
+    
+        // Handle the case where all data points are the same
+        if (min === max) {
+            min -= 1; // Adjust downwards a bit
+            max += 1; // Adjust upwards a bit
+        }
+    
+        let margin = (max - min) * 0.1; // Calculate margins as a percentage of the range
+        return {
+            lower: min - margin,
+            upper: max + margin
+        };
+    }
 });
+
+// Assume fetchDataAsync is a function that fetches data and returns a promise
+fetchDataAsync().then(data => {
+    if (data && data.datasets.length > 0) {
+        // Proceed with updating the chart
+        let bounds = calculateBounds(data.datasets);
+        btcChart.options.scales.y.min = bounds.lower;
+        btcChart.options.scales.y.max = bounds.upper;
+
+        // Assuming updateChartData is a function that updates the chart with new data
+        updateChartData(data.datasets, data.labels);
+    } else {
+        // Handle the case where no data is available
+        console.log("No data available for chart update.");
+    }
+}).catch(error => {
+    console.error("Failed to fetch data:", error);
+});
+
 
 //show and hide overlays, modded to show html content
 function toggleOverlay(contentHtml = '') {
