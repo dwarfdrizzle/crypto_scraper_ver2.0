@@ -120,9 +120,12 @@ const exchangeColors = {
                 let bounds = calculateBounds(btcChart.data.datasets);
     
                 // Update chart options with new bounds
-                btcChart.options.scales.y.min = bounds.lower;
-                btcChart.options.scales.y.max = bounds.upper;
-                
+                if (bounds) {
+                    btcChart.options.scales.y.min = bounds.lower;
+                    btcChart.options.scales.y.max = bounds.upper;
+                } else {
+                    // Optionally, reset to default behavior or handle differently
+                }
                 // Update the labels and refresh the chart
                 btcChart.data.labels = uniqueTimestamps;
                 btcChart.update();
@@ -228,19 +231,27 @@ const exchangeColors = {
     function calculateBounds(dataSets) {
         let allDataPoints = dataSets.reduce((acc, set) => acc.concat(set.data), []);
         if (allDataPoints.length === 0) {
-            return { lower: 0, upper: 1 }; // Default bounds if no data is available
+            // Instead of setting arbitrary bounds, consider not setting bounds at all
+            // and let Chart.js handle it based on the actual data once available.
+            return null; // Indicate that no valid bounds could be calculated.
         }
     
         let min = Math.min(...allDataPoints);
         let max = Math.max(...allDataPoints);
     
-        // Calculate margins directly based on min and max values
+        // Ensure there's a buffer if all values are the same
+        if (min === max) {
+            let adjustment = min * 0.1 || 1; // Adjust by 10% or by a unit if min is 0
+            min -= adjustment;
+            max += adjustment;
+        }
+    
         let marginLower = min * 0.1; // 10% of the minimum value
         let marginUpper = max * 0.1; // 10% of the maximum value
     
         return {
-            lower: min - marginLower, // 10% lower than the minimum data point
-            upper: max + marginUpper  // 10% higher than the maximum data point
+            lower: min - marginLower,
+            upper: max + marginUpper
         };
     }
 });
