@@ -116,12 +116,12 @@ const exchangeColors = {
                 }
                 
                 // Recalculate bounds based on the updated datasets, update boundaries on Y axis
-                console.log(btcChart.data.datasets);
-                let bounds = calculateBounds(btcChart.data.datasets);
+                //console.log(btcChart.data.datasets);
+                //let bounds = calculateBounds(btcChart.data.datasets);
     
                 // Update chart options with new bounds
-                btcChart.options.scales.y.min = bounds.lower;
-                btcChart.options.scales.y.max = bounds.upper;
+                //btcChart.options.scales.y.min = bounds.lower;
+                //btcChart.options.scales.y.max = bounds.upper;
                 
                 // Update the labels and refresh the chart
                 btcChart.data.labels = uniqueTimestamps;
@@ -225,20 +225,20 @@ const exchangeColors = {
     }
                 
     // Calculate the actual boundaries that we are setting in the chart
-    function calculateBounds(dataSets) {
-        let allDataPoints = dataSets.reduce((acc, set) => acc.concat(set.data), []);
-        if (allDataPoints.length === 0) {
-            return { lower: 0, upper: 1 }; // Default bounds if no data is available
-        }
+    //function calculateBounds(dataSets) {
+        //let allDataPoints = dataSets.reduce((acc, set) => acc.concat(set.data), []);
+        //if (allDataPoints.length === 0) {
+            //return { lower: 0, upper: 1 }; // Default bounds if no data is available
+        //}
     
-        let min = Math.min(...allDataPoints);
-        let max = Math.max(...allDataPoints);
+        //let min = Math.min(...allDataPoints);
+        //let max = Math.max(...allDataPoints);
     
-        return {
-            lower: min * 0.9, // Scale down the minimum by 10%
-            upper: max * 1.1  // Scale up the maximum by 10%
-        };
-    }
+        //return {
+            //lower: min * 0.9, // Scale down the minimum by 10%
+            //upper: max * 1.1  // Scale up the maximum by 10%
+        //};
+    //}
 });
 
 // Assume fetchDataAsync is a function that fetches data and returns a promise
