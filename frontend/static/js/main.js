@@ -115,14 +115,6 @@ const exchangeColors = {
                     btcChart.data.datasets.pop();
                 }
                 
-                // Recalculate bounds based on the updated datasets, update boundaries on Y axis
-                //console.log(btcChart.data.datasets);
-                //let bounds = calculateBounds(btcChart.data.datasets);
-    
-                // Update chart options with new bounds
-                //btcChart.options.scales.y.min = bounds.lower;
-                //btcChart.options.scales.y.max = bounds.upper;
-                
                 // Update the labels and refresh the chart
                 btcChart.data.labels = uniqueTimestamps;
                 btcChart.update();
@@ -223,41 +215,7 @@ const exchangeColors = {
             cellDiff.textContent = priceDiff.toFixed(2); // Adjust decimal points as needed
         });
     }
-                
-    // Calculate the actual boundaries that we are setting in the chart
-    //function calculateBounds(dataSets) {
-        //let allDataPoints = dataSets.reduce((acc, set) => acc.concat(set.data), []);
-        //if (allDataPoints.length === 0) {
-            //return { lower: 0, upper: 1 }; // Default bounds if no data is available
-        //}
-    
-        //let min = Math.min(...allDataPoints);
-        //let max = Math.max(...allDataPoints);
-    
-        //return {
-            //lower: min * 0.9, // Scale down the minimum by 10%
-            //upper: max * 1.1  // Scale up the maximum by 10%
-        //};
-    //}
 });
-
-// Assume fetchDataAsync is a function that fetches data and returns a promise
-//fetchDataAsync().then(data => {
-    //if (data && data.datasets.length > 0) {
-        // Proceed with updating the chart
-        //let bounds = calculateBounds(data.datasets);
-        //btcChart.options.scales.y.min = bounds.lower;
-        //btcChart.options.scales.y.max = bounds.upper;
-
-        // Assuming updateChartData is a function that updates the chart with new data
-        //updateChartData(data.datasets, data.labels);
-    //} else {
-        // Handle the case where no data is available
-        //console.log("No data available for chart update.");
-    //}
-//}).catch(error => {
-    //console.error("Failed to fetch data:", error);
-//});
 
 
 //show and hide overlays, modded to show html content
@@ -372,20 +330,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-window.addEventListener('scroll', () => {
-    console.log("Scroll event triggered"); // To check if the scroll event is working
-    document.querySelectorAll('.mission-statement svg').forEach((svg, index) => {
-        console.log(`Checking SVG ${index}`); // Log each SVG being checked
-        if (svg.getBoundingClientRect().top < window.innerHeight) {
-            console.log(`Animating SVG ${index}`); // Log when an SVG should animate
-            svg.classList.add('active');
-        } else {
-            svg.classList.remove('active');
-        }
-    });
-});
-
-
 //create cells for hero-section
 document.addEventListener("DOMContentLoaded", function() {
     const gridContainer = document.querySelector('.hero-section .grid-container');
@@ -396,4 +340,32 @@ document.addEventListener("DOMContentLoaded", function() {
             gridContainer.appendChild(gridCell);
         }
     }
+});
+
+//Hover shows exchange rankings info box
+document.addEventListener('DOMContentLoaded', function () {
+    const target = document.getElementById('infoicon-er');
+    const ERinfobox = document.getElementById('ER-info-box');
+    
+    target.addEventListener('mouseover', function() {
+        ERinfobox.style.display = 'block'; // Show the info box on hover
+    });
+    
+    target.addEventListener('mouseout', function() {
+        ERinfobox.style.display = 'none'; // Hide the info box when not hovering
+    });
+});
+
+//Hover shows Chart info box
+document.addEventListener('DOMContentLoaded', function () {
+    const target = document.getElementById('infoicon-c');
+    const Chartinfobox = document.getElementById('Chart-info-box');
+    
+    target.addEventListener('mouseover', function() {
+        Chartinfobox.style.display = 'block'; // Show the info box on hover
+    });
+    
+    target.addEventListener('mouseout', function() {
+        Chartinfobox.style.display = 'none'; // Hide the info box when not hovering
+    });
 });

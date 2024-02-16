@@ -497,6 +497,66 @@ button:hover {
   display: block;
 }
 
+#ER-info-box {
+  position: absolute;
+  width: 25%;
+  height: auto;
+  background-color: white;
+  border: 1px solid #000;
+  font-family: sans-serif;
+  font-size: small;
+  padding: 10px;
+  display: none; /* Keeps the box hidden */
+  z-index: 1001; /* Ensures it's above other content */
+  opacity: 0.9; /* Set opacity to 0.5 */
+  border-radius: 15px; /* Rounded corners */
+}
+
+#Chart-info-box {
+  position: absolute;
+  width: 25%;
+  height: auto;
+  background-color: white;
+  border: 1px solid #000;
+  font-family: sans-serif;
+  font-size: small;
+  padding: 10px;
+  display: none; /* Keeps the box hidden */
+  z-index: 1001; /* Ensures it's above other content */
+  opacity: 0.9; /* Set opacity to 0.5 */
+  border-radius: 15px; /* Rounded corners */
+}
+
+#hover-infocontainer {
+  width: 20%; 
+  height: 20%;
+  position: relative; /* This allows it to move with the page scroll */
+  display: block;
+} 
+
+#infoicon-er {
+  position: absolute; 
+  top: 50%; 
+  left: 20%;
+  transform: translate(-50%, -50%); /* Center it within the container */
+}
+
+#infoicon-c {
+  position: absolute; 
+  top: 50%; 
+  left: 20%;
+  transform: translate(-50%, -50%); /* Center it within the container */
+}
+/* Avg price at the top */
+#avgtitle {
+  position: absolute;
+  right: 5%;
+  top: 10%;
+  display: block; 
+  font-family: var(--font-family-mont);
+  color: var(--primary-color);
+}
+
 @keyframes dropdownAnimation {
   from {
       opacity: 0;
@@ -627,4 +687,5 @@ button:hover {
       height: auto;
       display: block;
     }
+    
        }
