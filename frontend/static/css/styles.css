@@ -550,11 +550,12 @@ button:hover {
 /* Avg price at the top */
 #avgtitle {
   position: absolute;
-  right: 5%;
-  top: 10%;
+  right: 7%;
+  top: 8%;
   display: block; 
-  font-family: var(--font-family-mont);
+  font-family: var(--font-family-sans);
   color: var(--primary-color);
+  font-weight: bold; 
 }
 
 @keyframes dropdownAnimation {
