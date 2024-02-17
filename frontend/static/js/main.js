@@ -178,7 +178,7 @@ const exchangeColors = {
 
     function updateAnalytics(data) {
         //$('#priceDifference').text(calculateDifference(data).toFixed(2));
-        $('#avgPrice').text(calculateAverage(data).toFixed(2));
+        $('.avgPrice').text(calculateAverage(data).toFixed(2));
         $('#stdDev').text(calculateStandardDeviation(data).toFixed(2));
     }
 
@@ -252,14 +252,14 @@ function showAnalysis() {
     var overlayContent = `
     <h1>Analysis</h1>
     <div class="analytics data-card">
-    <p><strong>Average Price:</strong> <span id="avgPrice">...</span></p>
-    <p><strong>Standard Deviation:</strong> <span id="stdDev">...</span></p>        
+        <p><strong>Average Price:</strong> <span class="avgPrice">...</span></p>
+        <p><strong>Standard Deviation:</strong> <span id="stdDev">...</span></p>        
     </div>
 
     <button class="close-button">
-    <svg viewBox="0 0 24 24" width="24" height="24">
-        <path d="M18 6L6 18M6 6l12 12" stroke="#fff" stroke-width="2"/>
-    </svg>
+        <svg viewBox="0 0 24 24" width="24" height="24">
+            <path d="M18 6L6 18M6 6l12 12" stroke="#fff" stroke-width="2"/>
+        </svg>
     </button>
     `; // Content for the overlay
 
